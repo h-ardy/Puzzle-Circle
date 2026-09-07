@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puzzle Club — free math for kids in Athens County, Ohio</title>
+<meta name="description" content="A free math club for kids in Athens County, Ohio. Open events at the library, plus a small cohort working toward competition. Run by student volunteers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16222C;
+    --ink-soft:#41525F;
+    --paper:#F3F1EA;
+    --paper-deep:#E7E3D7;
+    --river:#2F6350;
+    --marigold:#E5A727;
+    --rule:#C9C3B2;
+    --measure:62ch;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Source Serif 4",Georgia,serif;
+    font-size:1.0625rem;
+    line-height:1.65;
+  }
+  h1,h2,h3,.ui{font-family:"Bricolage Grotesque","Helvetica Neue",sans-serif;}
+  h1,h2,h3{line-height:1.05;margin:0 0 .5em;letter-spacing:-0.02em;}
+  h1{font-size:clamp(2.4rem,6.5vw,4.1rem);font-weight:800;}
+  h2{font-size:clamp(1.55rem,3.4vw,2.2rem);font-weight:700;}
+  h3{font-size:1.14rem;font-weight:700;letter-spacing:-0.01em;}
+  p{margin:0 0 1.1em;max-width:var(--measure);}
+  a{color:var(--river);text-decoration-thickness:1px;text-underline-offset:3px;}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--marigold);outline-offset:3px;}
+
+  .wrap{width:min(100% - 2.5rem,68rem);margin-inline:auto;}
+
+  /* header */
+  .top{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:1.5rem;flex-wrap:wrap;
+    padding:1.6rem 0 1.2rem;
+    border-bottom:1px solid var(--rule);
+  }
+  .mark{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.22rem;letter-spacing:-0.02em;}
+  .mark span{color:var(--river);}
+  .top nav{display:flex;gap:1.35rem;font-family:"Bricolage Grotesque",sans-serif;font-size:.95rem;font-weight:500;}
+  .top nav a{color:var(--ink-soft);text-decoration:none;}
+  .top nav a:hover{color:var(--ink);text-decoration:underline;}
+
+  /* hero */
+  .hero{padding:4.2rem 0 3.4rem;display:grid;gap:3rem;grid-template-columns:1fr;}
+  @media(min-width:56rem){
+    .hero{grid-template-columns:1.05fr .95fr;align-items:start;gap:4rem;padding:5.5rem 0 4.5rem;}
+  }
+  .hero p.lede{font-size:1.22rem;line-height:1.55;color:var(--ink-soft);}
+  .hero .facts{
+    margin:1.9rem 0 0;padding:0;list-style:none;
+    font-family:"Bricolage Grotesque",sans-serif;font-size:.98rem;color:var(--ink-soft);
+  }
+  .hero .facts li{padding:.5rem 0;border-top:1px solid var(--rule);}
+
+  /* puzzle card */
+  .puzzle{
+    background:var(--ink);color:var(--paper);
+    padding:1.9rem 1.7rem 1.7rem;
+    border-radius:2px;
+    box-shadow:14px 14px 0 var(--paper-deep);
+  }
+  .puzzle .kicker{
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.9rem;
+    color:var(--marigold);margin:0 0 .9rem;
+  }
+  .puzzle p{color:#DFE4E3;max-width:38ch;}
+  .puzzle button{
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.98rem;
+    background:var(--marigold);color:var(--ink);
+    border:0;border-radius:2px;padding:.6rem 1.1rem;cursor:pointer;
+  }
+  .puzzle button:hover{background:#F2B833;}
+  .answer{margin-top:1.2rem;border-top:1px solid #34424C;padding-top:1.1rem;}
+  .answer[hidden]{display:none;}
+  .answer p{margin-bottom:0;font-size:1rem;}
+  .answer strong{color:var(--marigold);font-weight:600;}
+
+  /* sections */
+  section{padding:3.4rem 0;border-top:1px solid var(--rule);}
+  .two{display:grid;gap:2.4rem;grid-template-columns:1fr;}
+  @media(min-width:52rem){.two{grid-template-columns:1fr 1fr;gap:3.2rem;}}
+  .tier h3{margin-bottom:.35rem;}
+  .tier .when{
+    font-family:"Bricolage Grotesque",sans-serif;font-size:.92rem;font-weight:500;
+    color:var(--river);margin:0 0 .8rem;
+  }
+
+  .pull{
+    border-left:3px solid var(--marigold);
+    padding-left:1.4rem;margin:0;
+    font-size:1.2rem;line-height:1.5;max-width:46ch;
+  }
+
+  .people{margin:0;padding:0;list-style:none;}
+  .people li{padding:.75rem 0;border-top:1px solid var(--rule);max-width:var(--measure);}
+  .people li:first-child{border-top:0;padding-top:0;}
+
+  .cta{
+    background:var(--ink);color:var(--paper);
+    padding:2.6rem 1.9rem;border-radius:2px;margin-top:.5rem;
+  }
+  .cta h2{color:var(--paper);}
+  .cta p{color:#DFE4E3;}
+  .cta a{color:var(--marigold);}
+
+  footer{padding:2.6rem 0 3.6rem;border-top:1px solid var(--rule);color:var(--ink-soft);font-size:.97rem;}
+  footer p{max-width:56ch;}
+
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="mark">Puzzle <span>Club</span></div>
+    <nav>
+      <a href="#what">What we do</a>
+      <a href="#why">Why</a>
+      <a href="#join">Come along</a>
+      <a href="#help">Help out</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Free math for kids in Athens County.</h1>
+      <p class="lede">We meet at the library and do the kind of math nobody assigns: puzzles, games, and problems worth arguing about. It costs nothing, and everyone who teaches is a volunteer.</p>
+      <ul class="facts">
+        <li>Seven free events last year, four at the Wells Library in Albany</li>
+        <li>Over ten volunteer instructors from local high schools</li>
+        <li>Advised by an Ohio University math professor and several PhD students</li>
+      </ul>
+    </div>
+
+    <div class="puzzle">
+      <p class="kicker">Try one</p>
+      <p>Ten kids show up to Puzzle Club. Every kid shakes hands with every other kid exactly once. How many handshakes happen?</p>
+      <button id="reveal" aria-expanded="false" aria-controls="answer">Show me</button>
+      <div class="answer" id="answer" hidden>
+        <p><strong>45.</strong> Each kid shakes nine hands, which gives ninety. But that counts every handshake twice, once from each side, so halve it. This is the same reasoning that later gets called a combination, and a nine-year-old can get there without the word.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="what">
+    <h2>Two ways to take part</h2>
+    <div class="two">
+      <div class="tier">
+        <h3>Library events</h3>
+        <p class="when">Open to anyone, no sign-up, free</p>
+        <p>A couple of hours of puzzles, games, and problems, with a separate track for elementary kids and for middle and high schoolers. Bring a friend. You do not need to be good at math, and you do not need to have come before.</p>
+      </div>
+      <div class="tier">
+        <h3>The cohort</h3>
+        <p class="when">Ten students, by application</p>
+        <p>A small group that meets online between sessions and in person once a month, working through real problem-solving and heading to the Math Kangaroo competition in March. For most of them it will be the first competition they have ever entered.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <h2>Why this exists</h2>
+    <p>Alexander eliminated its gifted program. After that, a kid around here who loved math had nowhere to take it. Not a team, not a club, not a competition. The talent did not go anywhere, but the path did.</p>
+    <p>So a few of us built one. Two students who come to Puzzle Club have since been named National Math Stars, which is roughly the point: the ability was already here, sitting in ordinary classrooms in a rural county, waiting for somebody to hand it a harder problem.</p>
+    <p class="pull">We think most kids do not dislike math. They dislike the version of it they were given.</p>
+  </section>
+
+  <section id="who">
+    <h2>Who runs it</h2>
+    <ul class="people">
+      <li>More than a dozen volunteer instructors, students at Albany and Athens high schools.</li>
+      <li>Senior advisors including a mathematics professor at Ohio University and several PhD students.</li>
+      <li>Nobody is paid. Every event is free to every family, and always will be.</li>
+    </ul>
+  </section>
+
+  <section id="join">
+    <h2>Come along</h2>
+    <p>The next event is at the Wells Library in Albany. Turn up, or write first if you would rather know what to expect. If your child is somewhere between bored in math class and obsessed with it, this is for them.</p>
+    <p>Cohort applications open once a year. If you would like to hear when, send us a note and we will let you know.</p>
+    <div class="cta">
+      <h2>Write to us</h2>
+      <p>Questions from families, teachers, or anyone curious: <a href="mailto:YOUR-EMAIL@EXAMPLE.COM">YOUR-EMAIL@EXAMPLE.COM</a></p>
+    </div>
+  </section>
+
+  <section id="help">
+    <h2>Help out</h2>
+    <div class="two">
+      <div class="tier">
+        <h3>Teach</h3>
+        <p>If you are a high school student who likes math, you can run a table at an event. You do not need to be the best mathematician in the room. You need to be able to ask a good question and then wait.</p>
+      </div>
+      <div class="tier">
+        <h3>Fund</h3>
+        <p>Our entire year costs about $2,650, which covers workbooks, competition registration fees, and laptops for students who do not have one at home. That is roughly $265 per student. If your organization funds this kind of work, we would like to talk.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Puzzle Club. Albany, Ohio. Free math, run by volunteers, for anyone in Athens County who wants it.</p>
+  </footer>
+
+</div>
+
+<script>
+  var btn = document.getElementById('reveal');
+  var ans = document.getElementById('answer');
+  btn.addEventListener('click', function () {
+    var open = ans.hasAttribute('hidden');
+    if (open) { ans.removeAttribute('hidden'); } else { ans.setAttribute('hidden',''); }
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Hide' : 'Show me';
+  });
+</script>
+
+</body>
+</html>
