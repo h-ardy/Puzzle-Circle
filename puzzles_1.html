@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Puzzles | Albany-Athens Puzzle Circle</title>
+<meta name="description" content="Three math puzzles from the Albany-Athens Puzzle Circle: patterns, logic and counting. Free events for kids in Athens County, Ohio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Bowlby+One&display=swap">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the puzzles</a>
+
+<header class="phead">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="index.html">
+        <svg viewBox="-12 -12 24 24" aria-hidden="true"><circle r="11" fill="#F7E2B2" stroke="#16211D" stroke-width="1.4"/><g stroke="#16211D" stroke-width=".9"><path d="M0-7.5L7.13-2.32L4.41 6.07L-4.41 6.07L-7.13-2.32Z" fill="none"/><path d="M0-7.5L4.41 6.07L-7.13-2.32L7.13-2.32L-4.41 6.07Z" fill="none"/></g><g fill="#FBF1DE" stroke="#16211D" stroke-width=".9"><circle cx="0" cy="-7.5" r="1.7"/><circle cx="7.13" cy="-2.32" r="1.7"/><circle cx="4.41" cy="6.07" r="1.7"/><circle cx="-4.41" cy="6.07" r="1.7"/><circle cx="-7.13" cy="-2.32" r="1.7"/></g></svg>
+        <span>Albany-Athens<br>Puzzle Circle</span>
+      </a>
+      <ul>
+        <li><a href="puzzles.html" aria-current="page">Puzzles</a></li>
+        <li><a href="index.html#ways">Ways in</a></li>
+        <li><a href="index.html#families">Families</a></li>
+        <li><a href="index.html#why">Why</a></li>
+        <li><a href="index.html#help">Help out</a></li>
+      </ul>
+      <a class="btn" href="index.html#join">Get the next date</a>
+    </nav>
+    <ul class="mnav" aria-label="Sections">
+      <li><a href="puzzles.html" aria-current="page">Puzzles</a></li><li><a href="index.html#ways">Ways in</a></li><li><a href="index.html#families">Families</a></li><li><a href="index.html#why">Why</a></li><li><a href="index.html#help">Help out</a></li>
+    </ul>
+  <div class="top">
+    <h1 class="vh">Puzzles from the Albany-Athens Puzzle Circle</h1>
+    <div class="tl" aria-hidden="true"><svg><text>PUZZLES</text></svg></div>
+    <p class="intro">Three problems from our events, for kids and the grown-ups next to them. The handshake puzzle is <a href="index.html">on the front page</a>.</p>
+  </div>
+  <svg class="strip" data-seed="91" data-sky="1" aria-hidden="true"></svg>
+</header>
+
+<main id="main" class="page">
+  <section class="sec" id="puzzles" aria-labelledby="pz-h">
+    <span class="tag l" aria-hidden="true">Puzzle break</span>
+    <span class="tag r" aria-hidden="true">Grown-ups welcome</span>
+    <div class="in">
+      <div class="pz-head">
+        <div class="txt">
+          <h2 class="h2" id="pz-h">Three to try</h2>
+          <p class="lede">Work each one out on paper first, then check your answer.</p>
+        </div>
+        <p class="progress" aria-live="polite"><i></i><i></i><i></i><span id="pzCount">0 of 3 solved</span></p>
+      </div>
+
+      <article class="pz" id="patterns" data-answer="30">
+        <div>
+          <h3>Patterns</h3>
+          <p class="prob">What number comes next: 2, 6, 12, 20, and then?</p>
+          <div class="vis rects" id="rects" aria-hidden="true"></div>
+        </div>
+        <div class="answer">
+          <form class="check" novalidate>
+            <div class="field">
+              <label for="a1">Your answer</label>
+              <div class="line"><input id="a1" inputmode="numeric" autocomplete="off" aria-describedby="fb1"><button class="btn" type="submit">Check</button></div>
+              <p class="fb" id="fb1" aria-live="polite"></p>
+            </div>
+          </form>
+          <details><summary>Show a hint</summary><div class="body">Look at the gaps between the numbers. Then look at the dot rectangles.</div></details>
+          <details class="sol"><summary>Show the answer</summary><div class="body"><strong>30.</strong> The gaps are 4, 6 and 8, so the next gap is 10. Or read the rectangles: 1×2, 2×3, 3×4, 4×5, and next comes 5×6.</div></details>
+        </div>
+      </article>
+
+      <article class="pz" id="logic" data-answer="8">
+        <div>
+          <h3>Logic</h3>
+          <p class="prob">A farm has chickens and cows. Together they have 20 heads and 56 legs. How many cows are on the farm?</p>
+          <div class="vis farm" aria-hidden="true"><span><b>20</b>heads</span><span><b>56</b>legs</span></div>
+        </div>
+        <div class="answer">
+          <form class="check" novalidate>
+            <div class="field">
+              <label for="a2">Number of cows</label>
+              <div class="line"><input id="a2" inputmode="numeric" autocomplete="off" aria-describedby="fb2"><button class="btn" type="submit">Check</button></div>
+              <p class="fb" id="fb2" aria-live="polite"></p>
+            </div>
+          </form>
+          <details><summary>Show a hint</summary><div class="body">Pretend every animal is a chicken. How many legs would that be, and how many are missing?</div></details>
+          <details class="sol"><summary>Show the answer</summary><div class="body"><strong>8 cows.</strong> Twenty chickens would have 40 legs, so 16 legs are missing. Each cow adds 2 legs over a chicken, so 16 ÷ 2 = 8 cows, and 12 chickens.</div></details>
+        </div>
+      </article>
+
+      <article class="pz" id="counting" data-answer="64">
+        <div>
+          <h3>Counting</h3>
+          <p class="prob">A pawpaw has six seeds in a row. Each seed is dark or light. How many different rows can there be?</p>
+          <div class="vis">
+            <div class="seeds" id="seeds" role="group" aria-label="Six seeds you can flip between dark and light"></div>
+            <p class="seedval" id="seedval" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="answer">
+          <form class="check" novalidate>
+            <div class="field">
+              <label for="a3">Number of rows</label>
+              <div class="line"><input id="a3" inputmode="numeric" autocomplete="off" aria-describedby="fb3"><button class="btn" type="submit">Check</button></div>
+              <p class="fb" id="fb3" aria-live="polite"></p>
+            </div>
+          </form>
+          <details><summary>Show a hint</summary><div class="body">Start small. One seed gives 2 rows. Two seeds give 4. What happens each time you add a seed?</div></details>
+          <details class="sol"><summary>Show the answer</summary><div class="body"><strong>64.</strong> Each new seed doubles the count: 2 × 2 × 2 × 2 × 2 × 2 = 64. Our badge shows one of them, 101101.</div></details>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="next" aria-labelledby="next-h">
+    <span class="tag l" aria-hidden="true">Come along</span>
+    <span class="tag r" aria-hidden="true">Free for every family</span>
+    <div class="in pnext">
+      <div style="display:grid;gap:14px">
+        <h2 class="h2" id="next-h">Want more?</h2>
+        <p class="lede">We bring a new set to every library event. Leave your email and we'll send the next date.</p>
+      </div>
+      <a class="btn paper" href="index.html#join">Get the next date</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <svg class="foothills strip" data-seed="171" aria-hidden="true"></svg>
+  <div class="in">
+    <div>
+      <p class="name">Albany-Athens Puzzle Circle</p>
+      <p>Albany, Ohio. Free math, run by student volunteers, for any kid in Athens County who wants it.</p>
+    </div>
+    <p><a href="index.html">Back to the handshake puzzle</a></p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+(() => {
+  (function buildRects(){
+    const host = document.getElementById('rects'); const cell = 11;
+    [[1,2],[2,3],[3,4],[4,5]].forEach(([r, c]) => {
+      const f = document.createElement('figure');
+      let s = `<svg width="${c*cell+2}" height="${r*cell+2}" viewBox="0 0 ${c*cell+2} ${r*cell+2}">`;
+      for (let i = 0; i < r; i++) for (let j = 0; j < c; j++) s += `<circle cx="${j*cell+cell/2+1}" cy="${i*cell+cell/2+1}" r="4"/>`;
+      f.innerHTML = s + `</svg><figcaption>${r*c}</figcaption>`; host.appendChild(f);
+    });
+    const f = document.createElement('figure'); f.innerHTML = '<div class="unk">?</div><figcaption>&nbsp;</figcaption>'; host.appendChild(f);
+  })();
+  (function buildSeeds(){
+    const host = document.getElementById('seeds'), out = document.getElementById('seedval');
+    const start = [1,0,1,1,0,1];
+    const upd = () => { const bits = [...host.children].map(b => b.getAttribute('aria-pressed') === 'true' ? 1 : 0); const v = parseInt(bits.join(''), 2);
+      out.textContent = `This row reads ${bits.join('')}. As a binary number that's ${v}.`; };
+    start.forEach((b, i) => { const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'seed';
+      btn.setAttribute('aria-pressed', b ? 'true' : 'false'); btn.setAttribute('aria-label', `Seed ${i+1}, dark`);
+      btn.innerHTML = '<svg viewBox="0 0 44 56" aria-hidden="true"><ellipse cx="22" cy="28" rx="14" ry="20"/></svg>';
+      const lab = () => btn.setAttribute('aria-label', `Seed ${i+1}, ${btn.getAttribute('aria-pressed') === 'true' ? 'dark' : 'light'}`);
+      lab(); btn.addEventListener('click', () => { btn.setAttribute('aria-pressed', btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); lab(); upd(); });
+      host.appendChild(btn); });
+    upd();
+  })();
+  const solved = new Set();
+  document.querySelectorAll('.pz').forEach((pz, idx) => {
+    const form = pz.querySelector('form'), inp = pz.querySelector('input'), fb = pz.querySelector('.fb');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const raw = inp.value.trim();
+      const num = (raw.match(/-?\d+/) || [])[0];
+      if (!raw){ fb.className = 'fb no'; fb.textContent = 'Type a number first.'; inp.setAttribute('aria-invalid', 'true'); inp.focus(); return; }
+      if (num === undefined){ fb.className = 'fb no'; fb.textContent = 'Answer with a number, like 12.'; inp.setAttribute('aria-invalid', 'true'); return; }
+      if (num === pz.dataset.answer){
+        inp.setAttribute('aria-invalid', 'false'); fb.className = 'fb ok'; fb.textContent = 'That’s it. Open the answer to see one way to explain it.';
+        pz.classList.add('solved'); solved.add(idx);
+      } else {
+        inp.setAttribute('aria-invalid', 'true'); fb.className = 'fb no'; fb.textContent = `Not ${num}. Try the hint, then have another go.`;
+      }
+      document.querySelectorAll('.progress i').forEach((d, i) => d.classList.toggle('on', i < solved.size));
+      document.getElementById('pzCount').textContent = solved.size === 3 ? 'All 3 solved. Come to an event for more.' : `${solved.size} of 3 solved`;
+    });
+  });
+
+  const go = () => { window.PC.setVW(); window.PC.measureCap(); window.PC.fitTitles(); window.PC.drawStrips(); };
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(go, 120); });
+  (document.fonts && document.fonts.load) ? Promise.race([document.fonts.load('100px "Bowlby One"').then(() => document.fonts.ready), new Promise(r => setTimeout(r, 1500))]).then(go) : go();
+})();
+</script>
+</body>
+</html>

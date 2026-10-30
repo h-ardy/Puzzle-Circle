@@ -1,673 +1,651 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Albany-Athens Puzzle Circle — free math puzzles for kids in Athens County, Ohio</title>
-<meta name="description" content="Albany-Athens Puzzle Circle is a free math club for kids in Athens County, Ohio. Open puzzle events at the library, plus a small cohort working toward competition. Run by student volunteers.">
-<meta property="og:title" content="Albany-Athens Puzzle Circle">
-<meta property="og:description" content="Free math puzzles, games, and competition prep for kids in Athens County, Ohio. Run by student volunteers.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#1B2A4A">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-22 -22 44 44'%3E%3Cg%3E%3Cpath transform='translate(1.2,-1.2)' fill='%23E8604C' d='M0 0L0 -6.8A3.2 3.2 0 0 1 0 -13.2L0 -20A20 20 0 0 1 20 0L13.2 0A3.2 3.2 0 0 0 6.8 0Z'/%3E%3Cpath transform='rotate(90) translate(1.2,-1.2)' fill='%23F4B22E' d='M0 0L0 -6.8A3.2 3.2 0 0 1 0 -13.2L0 -20A20 20 0 0 1 20 0L13.2 0A3.2 3.2 0 0 0 6.8 0Z'/%3E%3Cpath transform='rotate(180) translate(1.2,-1.2)' fill='%2314857F' d='M0 0L0 -6.8A3.2 3.2 0 0 1 0 -13.2L0 -20A20 20 0 0 1 20 0L13.2 0A3.2 3.2 0 0 0 6.8 0Z'/%3E%3Cpath transform='rotate(270) translate(1.2,-1.2)' fill='%233A66D4' d='M0 0L0 -6.8A3.2 3.2 0 0 1 0 -13.2L0 -20A20 20 0 0 1 20 0L13.2 0A3.2 3.2 0 0 0 6.8 0Z'/%3E%3C/g%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Albany-Athens Puzzle Circle</title>
+<meta name="description" content="Free math puzzles, games and competitions for kids in Athens County, Ohio. Run by student volunteers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy:#1B2A4A;
-    --navy-soft:#48566F;
-    --cream:#FBF7EF;
-    --cream-deep:#F1EADB;
-    --white:#FFFFFF;
-    --coral:#E8604C;
-    --marigold:#F4B22E;
-    --teal:#14857F;
-    --teal-dark:#0E6763;
-    --blue:#3A66D4;
-    --line:#DDD5C2;
-    --radius:16px;
-    --shadow:0 6px 0 var(--navy);
-    --measure:62ch;
-  }
-  *{box-sizing:border-box;}
-  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
-  body{
-    margin:0;background:var(--cream);color:var(--navy);
-    font-family:"Figtree","Helvetica Neue",Arial,sans-serif;
-    font-size:1.0625rem;line-height:1.62;
-  }
-  h1,h2,h3,.display{font-family:"Bricolage Grotesque","Helvetica Neue",sans-serif;}
-  h1,h2,h3{line-height:1.06;margin:0 0 .5em;letter-spacing:-0.02em;}
-  h1{font-size:clamp(2.5rem,6.6vw,4.3rem);font-weight:800;}
-  h2{font-size:clamp(1.8rem,3.8vw,2.5rem);font-weight:800;}
-  h3{font-size:1.25rem;font-weight:700;letter-spacing:-0.01em;}
-  p{margin:0 0 1.1em;max-width:var(--measure);}
-  a{color:var(--blue);text-underline-offset:3px;}
-  :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px;}
-  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
-  .wrap{width:min(100% - 2.5rem,70rem);margin-inline:auto;}
-  section{scroll-margin-top:5rem;}
-
-  /* four-colour tile bar, used as a divider */
-  .tilebar{
-    height:10px;
-    background:linear-gradient(90deg,var(--coral) 0 25%,var(--marigold) 25% 50%,var(--teal) 50% 75%,var(--blue) 75% 100%);
-    background-size:160px 10px;
-  }
-
-  /* buttons */
-  .btn{
-    display:inline-flex;align-items:center;gap:.5rem;
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1rem;
-    padding:.7rem 1.25rem;border:2px solid var(--navy);border-radius:12px;
-    background:var(--white);color:var(--navy);text-decoration:none;cursor:pointer;
-    box-shadow:0 4px 0 var(--navy);
-    transition:transform .12s ease,box-shadow .12s ease;
-  }
-  .btn:hover{transform:translateY(-1px);box-shadow:0 5px 0 var(--navy);}
-  .btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--navy);}
-  .btn.primary{background:var(--marigold);}
-  .btn.dark{background:var(--navy);color:var(--white);}
-  .btn.small{padding:.5rem .95rem;font-size:.92rem;border-radius:10px;box-shadow:0 3px 0 var(--navy);}
-
-  /* header */
-  .top{
-    position:sticky;top:0;z-index:20;
-    background:rgba(251,247,239,.94);backdrop-filter:blur(8px);
-    border-bottom:2px solid var(--navy);
-  }
-  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 0;}
-  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--navy);}
-  .brand svg{width:2.5rem;height:2.5rem;flex:none;}
-  .brand .name{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.12rem;line-height:1.05;letter-spacing:-0.02em;}
-  .brand .name small{display:block;font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--navy-soft);margin-top:.15rem;}
-  .top nav{display:none;gap:1.5rem;font-family:"Bricolage Grotesque",sans-serif;font-weight:500;font-size:.98rem;}
-  .top nav a{color:var(--navy);text-decoration:none;padding:.3rem 0;border-bottom:2px solid transparent;}
-  .top nav a:hover{border-bottom-color:var(--coral);}
-  .top .right{display:flex;align-items:center;gap:1.4rem;}
-  @media(min-width:60rem){.top nav{display:flex;}}
-  @media(max-width:30rem){.brand .name small{display:none;}.brand .name{font-size:1rem;}}
-
-  /* hero */
-  .hero{
-    background:
-      radial-gradient(circle at 1px 1px,rgba(27,42,74,.13) 1.4px,transparent 1.6px) 0 0/26px 26px,
-      var(--cream);
-    border-bottom:2px solid var(--navy);
-  }
-  .hero .wrap{display:grid;gap:3rem;padding:3.6rem 0 4.2rem;align-items:center;}
-  @media(min-width:58rem){.hero .wrap{grid-template-columns:1.08fr .92fr;gap:4rem;padding:5rem 0 5.4rem;}}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:.5rem;
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;
-    background:var(--white);border:2px solid var(--navy);border-radius:999px;padding:.3rem .85rem;margin-bottom:1.3rem;
-  }
-  .eyebrow i{width:.6rem;height:.6rem;border-radius:50%;background:var(--teal);display:block;}
-  .hero h1 mark{
-    background:linear-gradient(transparent 62%,var(--marigold) 62% 92%,transparent 92%);
-    color:inherit;padding:0 .08em;
-  }
-  .hero .lede{font-size:1.2rem;line-height:1.55;color:var(--navy-soft);max-width:52ch;}
-  .hero .actions{display:flex;flex-wrap:wrap;gap:.9rem;margin:1.7rem 0 1.6rem;}
-  .chips{display:flex;flex-wrap:wrap;gap:.5rem .6rem;margin:0;padding:0;list-style:none;}
-  .chips li{
-    font-size:.92rem;font-weight:600;background:var(--white);border:1.5px solid var(--line);
-    border-radius:999px;padding:.3rem .8rem;display:flex;align-items:center;gap:.4rem;
-  }
-  .chips li::before{content:"";width:.5rem;height:.5rem;border-radius:2px;background:var(--teal);}
-  .chips li:nth-child(2)::before{background:var(--coral);}
-  .chips li:nth-child(3)::before{background:var(--blue);}
-
-  /* puzzle cards */
-  .pz{
-    background:var(--white);border:2px solid var(--navy);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:1.6rem 1.5rem 1.5rem;position:relative;
-  }
-  .pz.solved{background:#F1FBF6;}
-  .pz-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.9rem;}
-  .pz-tag{
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;
-    background:var(--marigold);border:2px solid var(--navy);border-radius:8px;padding:.15rem .6rem;margin:0;
-  }
-  .pz.c2 .pz-tag{background:#F6B3A8;}
-  .pz.c3 .pz-tag{background:#A9C0F5;}
-  .pz-state{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.85rem;color:var(--navy-soft);margin:0;}
-  .pz.solved .pz-state{color:var(--teal-dark);}
-  .pz-q{font-size:1.16rem;line-height:1.5;font-weight:500;max-width:none;}
-  .pz-seq{display:flex;flex-wrap:wrap;gap:.45rem;margin:.2rem 0 1.1rem;padding:0;list-style:none;}
-  .pz-seq li{
-    min-width:3rem;text-align:center;padding:.4rem .5rem;
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.3rem;
-    border:2px solid var(--navy);border-radius:10px;background:var(--cream);
-  }
-  .pz-seq li.blank{background:var(--marigold);}
-  .pz-form{display:flex;gap:.6rem;flex-wrap:wrap;}
-  .pz-form input{
-    width:7.5rem;font:inherit;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.3rem;text-align:center;
-    padding:.5rem .6rem;border:2px solid var(--navy);border-radius:12px;background:var(--cream);color:var(--navy);
-  }
-  .pz-form input::placeholder{color:#9AA3B3;font-weight:500;}
-  .pz-msg{min-height:1.6em;margin:.85rem 0 0;font-weight:600;max-width:none;}
-  .pz-msg.ok{color:var(--teal-dark);}
-  .pz-msg.no{color:#B33A27;}
-  .pz-msg.hint{color:var(--navy-soft);font-weight:500;}
-  .pz-tools{display:flex;gap:1.1rem;flex-wrap:wrap;margin-top:.3rem;}
-  .linkish{
-    background:none;border:0;padding:.2rem 0;font:inherit;font-weight:600;font-size:.95rem;color:var(--blue);
-    text-decoration:underline;text-underline-offset:3px;cursor:pointer;
-  }
-  .pz-explain{margin-top:1rem;padding-top:1rem;border-top:2px dashed var(--line);}
-  .pz-explain[hidden]{display:none;}
-  .pz-explain p{margin:0;font-size:1rem;}
-  .pz-explain strong{color:var(--teal-dark);}
-
-  /* scoreboard strip */
-  .score{background:var(--navy);color:var(--white);border-bottom:2px solid var(--navy);}
-  .score .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:0;padding:0;}
-  @media(min-width:52rem){.score .wrap{grid-template-columns:repeat(4,1fr);}}
-  .stat{padding:1.9rem 1.2rem;border-left:1px solid rgba(255,255,255,.16);}
-  .stat:nth-child(odd){border-left:0;}
-  .stat:nth-child(n+3){border-top:1px solid rgba(255,255,255,.16);}
-  @media(min-width:52rem){.stat:nth-child(odd){border-left:1px solid rgba(255,255,255,.16);}.stat:first-child{border-left:0;}.stat:nth-child(n+3){border-top:0;}}
-  .stat b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(2.2rem,5vw,3.1rem);line-height:1;color:var(--marigold);letter-spacing:-0.03em;}
-  .stat:nth-child(2) b{color:#F59A8B;}
-  .stat:nth-child(3) b{color:#7FD5CF;}
-  .stat:nth-child(4) b{color:#A9C0F5;}
-  .stat span{display:block;margin-top:.5rem;font-size:.98rem;color:#DCE2EE;max-width:22ch;line-height:1.35;}
-
-  /* generic sections */
-  .block{padding:4.4rem 0;}
-  .block.alt{background:var(--cream-deep);border-block:2px solid var(--navy);}
-  .kicker{
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--teal-dark);margin:0 0 .6rem;
-  }
-  .sec-head{margin-bottom:2.2rem;}
-  .sec-head p{color:var(--navy-soft);font-size:1.1rem;}
-
-  /* puzzle break */
-  .progress{
-    display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;
-    background:var(--white);border:2px solid var(--navy);border-radius:14px;padding:.7rem 1rem;margin-bottom:1.8rem;
-    width:fit-content;max-width:100%;
-  }
-  .progress .slots{display:flex;gap:.4rem;}
-  .progress svg{width:2.2rem;height:2.2rem;display:block;fill:var(--cream-deep);stroke:var(--navy);stroke-width:1.3;transition:fill .25s ease;}
-  .progress svg.on:nth-child(1){fill:var(--coral);}
-  .progress svg.on:nth-child(2){fill:var(--marigold);}
-  .progress svg.on:nth-child(3){fill:var(--teal);}
-  .progress svg.pop{animation:pop .45s ease;}
-  @keyframes pop{0%{transform:scale(1);}45%{transform:scale(1.3) rotate(-8deg);}100%{transform:scale(1);}}
-  .progress p{margin:0;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;}
-  .play-grid{display:grid;gap:2rem;grid-template-columns:1fr;}
-  @media(min-width:54rem){.play-grid{grid-template-columns:1fr 1fr;gap:2.4rem;}}
-  .win{
-    display:none;margin-top:2rem;padding:1.3rem 1.5rem;background:var(--marigold);
-    border:2px solid var(--navy);border-radius:var(--radius);box-shadow:var(--shadow);
-  }
-  .win.show{display:block;}
-  .win p{margin:0;font-weight:600;max-width:none;}
-
-  /* levels */
-  .levels{display:grid;gap:2.2rem;grid-template-columns:1fr;}
-  @media(min-width:54rem){.levels{grid-template-columns:1fr 1fr;gap:2.6rem;}}
-  .level{
-    background:var(--white);border:2px solid var(--navy);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:0 1.7rem 1.7rem;position:relative;overflow:hidden;
-  }
-  .level::before{content:"";display:block;height:12px;margin:0 -1.7rem 1.5rem;background:var(--teal);border-bottom:2px solid var(--navy);}
-  .level.two::before{background:var(--coral);}
-  .level .badge{
-    display:inline-block;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;
-    background:#BFE7E3;border:2px solid var(--navy);border-radius:8px;padding:.15rem .6rem;margin-bottom:.9rem;
-  }
-  .level.two .badge{background:#F6B3A8;}
-  .level ul{margin:1rem 0 0;padding:0;list-style:none;}
-  .level li{display:flex;gap:.7rem;padding:.55rem 0;border-top:1px solid var(--line);font-weight:500;}
-  .level li::before{content:"";flex:none;width:.7rem;height:.7rem;margin-top:.5rem;border-radius:2px;background:var(--teal);}
-  .level.two li::before{background:var(--coral);}
-
-  /* parents */
-  .faq{display:grid;gap:.9rem;max-width:52rem;}
-  .faq details{background:var(--white);border:2px solid var(--navy);border-radius:14px;padding:0;}
-  .faq summary{
-    list-style:none;cursor:pointer;padding:1.05rem 3.2rem 1.05rem 1.3rem;position:relative;
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.1rem;
-  }
-  .faq summary::-webkit-details-marker{display:none;}
-  .faq summary::after{
-    content:"+";position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);
-    width:1.7rem;height:1.7rem;border-radius:8px;background:var(--marigold);border:2px solid var(--navy);
-    display:grid;place-items:center;font-size:1.2rem;line-height:1;
-  }
-  .faq details[open] summary::after{content:"–";}
-  .faq details p{margin:0;padding:0 1.3rem 1.2rem;color:var(--navy-soft);}
-
-  /* story */
-  .story{display:grid;gap:3rem;}
-  @media(min-width:56rem){.story{grid-template-columns:1.1fr .9fr;gap:4.5rem;align-items:start;}}
-  .pull{
-    margin:0;background:var(--navy);color:var(--white);border-radius:var(--radius);
-    padding:2rem 1.8rem;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;
-    font-size:clamp(1.35rem,2.6vw,1.75rem);line-height:1.25;letter-spacing:-0.01em;
-    box-shadow:8px 8px 0 var(--marigold);position:relative;
-  }
-  .pull::before{content:"“";position:absolute;top:-.1em;left:.45rem;font-size:5rem;line-height:1;color:var(--marigold);}
-  .pull span{display:block;padding-top:1.3rem;}
-
-  /* who */
-  .crew{display:grid;gap:1.4rem;grid-template-columns:1fr;}
-  @media(min-width:54rem){.crew{grid-template-columns:repeat(3,1fr);}}
-  .who{background:var(--white);border:2px solid var(--navy);border-radius:var(--radius);padding:1.5rem;}
-  .who .ico{
-    width:3rem;height:3rem;border-radius:12px;border:2px solid var(--navy);display:grid;place-items:center;margin-bottom:1rem;
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.3rem;
-  }
-  .who:nth-child(1) .ico{background:#F6B3A8;}
-  .who:nth-child(2) .ico{background:#A9C0F5;}
-  .who:nth-child(3) .ico{background:var(--marigold);}
-  .who p{margin:0;color:var(--navy-soft);}
-
-  /* join */
-  .join{display:grid;gap:2.4rem;}
-  @media(min-width:56rem){.join{grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}}
-  .cta{
-    background:var(--navy);color:var(--white);border-radius:var(--radius);padding:2.2rem 1.9rem;
-    box-shadow:8px 8px 0 var(--coral);
-  }
-  .cta h3{color:var(--white);font-size:1.6rem;}
-  .cta p{color:#DCE2EE;}
-  .cta a.mail{color:var(--marigold);font-weight:700;word-break:break-all;}
-
-  /* help */
-  .help{display:grid;gap:2.2rem;}
-  @media(min-width:54rem){.help{grid-template-columns:1fr 1fr;gap:2.6rem;}}
-  .help .card{background:var(--white);border:2px solid var(--navy);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.7rem;}
-  .budget{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;margin:0 0 1rem;}
-  .budget b{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:2.6rem;line-height:1;letter-spacing:-0.03em;color:var(--coral);}
-  .budget span{font-weight:600;color:var(--navy-soft);}
-
-  footer{background:var(--navy);color:#DCE2EE;padding:2.8rem 0 3rem;}
-  footer .wrap{display:flex;gap:1.2rem;align-items:flex-start;flex-wrap:wrap;}
-  footer svg{width:3rem;height:3rem;flex:none;}
-  footer .fname{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.25rem;color:var(--white);margin:0 0 .3rem;}
-  footer p{margin:0;max-width:56ch;}
-
-  @media(prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto;}
-    *{transition:none!important;animation:none!important;}
-  }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Bowlby+One&display=swap">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to the page</a>
 
-<!-- shared logo: four jigsaw pieces forming a circle -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <path id="piece" d="M0 0L0 -6.8A3.2 3.2 0 0 1 0 -13.2L0 -20A20 20 0 0 1 20 0L13.2 0A3.2 3.2 0 0 0 6.8 0Z"/>
-    <symbol id="logo" viewBox="-22 -22 44 44">
-      <use href="#piece" transform="translate(1.2,-1.2)" style="fill:var(--coral)"/>
-      <use href="#piece" transform="rotate(90) translate(1.2,-1.2)" style="fill:var(--marigold)"/>
-      <use href="#piece" transform="rotate(180) translate(1.2,-1.2)" style="fill:var(--teal)"/>
-      <use href="#piece" transform="rotate(270) translate(1.2,-1.2)" style="fill:var(--blue)"/>
-    </symbol>
-    <symbol id="slot" viewBox="-16 -20 36 36">
-      <path d="M-12 -12H-4A4 4 0 1 1 4 -12H12V-4A4 4 0 1 1 12 4V12H-12Z"/>
-    </symbol>
-  </defs>
-</svg>
+<header class="hero-wrap" id="top">
+  <div class="hero" id="hero">
+    <div class="frame" id="frame">
+      <svg class="grain" aria-hidden="true"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .45  0 0 0 0 .3  0 0 0 0 .2  0 0 0 .55 0"/></filter><rect width="100%" height="100%" filter="url(#gr)"/></svg>
 
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="#top" aria-label="Albany-Athens Puzzle Circle, home">
-      <svg role="img" aria-hidden="true"><use href="#logo"/></svg>
-      <span class="name">Albany-Athens<br>Puzzle Circle<small>Free math for kids</small></span>
-    </a>
-    <div class="right">
-      <nav aria-label="Main">
-        <a href="#play">Play</a>
-        <a href="#levels">Ways to join</a>
-        <a href="#parents">For parents</a>
-        <a href="#why">Why</a>
-        <a href="#help">Help out</a>
+      <nav class="nav" aria-label="Main">
+        <a class="brand" href="#top">
+          <svg viewBox="-12 -12 24 24" aria-hidden="true"><circle r="11" fill="#F7E2B2" stroke="#16211D" stroke-width="1.4"/><g stroke="#16211D" stroke-width=".9"><path d="M0-7.5L7.13-2.32L4.41 6.07L-4.41 6.07L-7.13-2.32Z" fill="none"/><path d="M0-7.5L4.41 6.07L-7.13-2.32L7.13-2.32L-4.41 6.07Z" fill="none"/></g><g fill="#FBF1DE" stroke="#16211D" stroke-width=".9"><circle cx="0" cy="-7.5" r="1.7"/><circle cx="7.13" cy="-2.32" r="1.7"/><circle cx="4.41" cy="6.07" r="1.7"/><circle cx="-4.41" cy="6.07" r="1.7"/><circle cx="-7.13" cy="-2.32" r="1.7"/></g></svg>
+          <span>Albany-Athens<br>Puzzle Circle</span>
+        </a>
+        <ul>
+          <li><a href="puzzles.html">Puzzles</a></li>
+          <li><a href="#ways">Ways in</a></li>
+          <li><a href="#families">Families</a></li>
+          <li><a href="#why">Why</a></li>
+          <li><a href="#help">Help out</a></li>
+        </ul>
+        <a class="btn" href="#join">Get the next date</a>
       </nav>
-      <a class="btn small primary" href="#join">Come along</a>
+      <ul class="mnav" aria-label="Sections">
+        <li><a href="puzzles.html">Puzzles</a></li><li><a href="#ways">Ways in</a></li><li><a href="#families">Families</a></li><li><a href="#why">Why</a></li><li><a href="#help">Help out</a></li>
+      </ul>
+
+      <div class="siderule l" aria-hidden="true"></div>
+      <div class="siderule r" aria-hidden="true"></div>
+      <span class="side l" style="top:calc(250 * var(--u))" aria-hidden="true">Albany, Ohio</span>
+      <span class="side l" style="top:calc(660 * var(--u))" aria-hidden="true">Wells Library</span>
+      <span class="side r" style="top:calc(250 * var(--u))" aria-hidden="true">Athens County</span>
+      <span class="side r" style="top:calc(660 * var(--u))" aria-hidden="true">Free for every family</span>
+
+      <svg class="hills back" id="hillsBack" aria-hidden="true"></svg>
+
+      <h1 class="vh">Albany-Athens Puzzle Circle: free math puzzles for kids in Athens County, Ohio</h1>
+      <div class="tl tl1" aria-hidden="true"><svg><text>PUZZLE</text></svg></div>
+      <div class="tl tl2" aria-hidden="true"><svg><text>CIRCLE</text></svg></div>
+
+      <svg class="hills front" id="hillsFront" aria-hidden="true"></svg>
+
+      <div class="brief" id="brief">
+        <p class="q">Ten kids meet at the library. Every kid shakes hands with every other kid once.</p>
+        <p class="how">Draw every handshake. Drag from one kid to another, or tap two kids in a row.</p>
+        <p class="next">Next library event: date coming soon. <a href="#join">Get it by email</a></p>
+      </div>
+
+      <div class="ring" id="ring" role="group" aria-label="Handshake puzzle: ten kids in a circle">
+        <div class="disc"></div>
+        <svg class="chords" id="chords" viewBox="-100 -100 200 200" aria-hidden="true"></svg>
+      </div>
+
+      <div class="tally" id="tally">
+        <p class="count" aria-live="polite"><span id="count">0</span><small id="countLabel">handshakes so far</small></p>
+        <p class="status" id="status" aria-live="polite">How many will there be? Guess first, then start drawing.</p>
+        <div class="row">
+          <button class="btn ghost" type="button" id="reset">Start over</button>
+          <button class="btn" type="button" id="drawRest">Draw the rest</button>
+        </div>
+      </div>
+
+      <canvas class="leaves" id="leaves" aria-hidden="true"></canvas>
     </div>
   </div>
 </header>
 
-<main id="top">
+<main id="main" class="page">
 
-  <div class="hero">
-    <div class="wrap">
-      <div>
-        <p class="eyebrow"><i></i> Free · Athens County, Ohio</p>
-        <h1>Free math <mark>puzzles</mark> for kids in Athens County.</h1>
-        <p class="lede">The Albany-Athens Puzzle Circle meets at the library and does the kind of math nobody assigns: puzzles, games, and problems worth arguing about. It costs nothing, and everyone who teaches is a volunteer.</p>
-        <div class="actions">
-          <a class="btn primary" href="#play">Try a puzzle</a>
-          <a class="btn" href="#parents">Info for parents</a>
+  <section class="sec" id="about" aria-labelledby="about-h">
+    <span class="tag l" aria-hidden="true">What it is</span>
+    <span class="tag r" aria-hidden="true">Athens County, Ohio</span>
+    <div class="in">
+      <div class="about-top">
+        <div class="crest">
+          <svg viewBox="0 0 300 300" role="img" aria-label="Puzzle Circle badge: a halved pawpaw whose six seeds read 101101">
+            <defs>
+              <path id="bt" d="M 42,150 A 108,108 0 0 1 258,150"/>
+              <path id="bb" d="M 24,150 A 126,126 0 0 0 276,150"/>
+            </defs>
+            <circle cx="150" cy="150" r="142" fill="none" stroke="currentColor" stroke-width="6"/>
+            <circle cx="150" cy="150" r="96" fill="none" stroke="currentColor" stroke-width="2"/>
+            <text font-family="'Bowlby One',sans-serif" font-size="23" letter-spacing="4" fill="currentColor" text-anchor="middle"><textPath href="#bt" startOffset="50%">PUZZLE CIRCLE</textPath></text>
+            <text font-family="'Andika',sans-serif" font-weight="700" font-size="17" letter-spacing="5" fill="currentColor" text-anchor="middle"><textPath href="#bb" startOffset="50%">ALBANY / ATHENS</textPath></text>
+            <g transform="translate(156,154) rotate(-18) scale(0.84)">
+              <path d="M -86,-4 C -104,-30 -92,-58 -62,-56 C -64,-34 -72,-14 -86,-4 Z" fill="currentColor"/>
+              <path d="M -74,0 L -88,-5" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+              <path d="M -75,0 C -75,-40 -20,-40 20,-36 C 60,-32 80,-18 80,0 C 80,18 60,32 20,36 C -20,40 -75,40 -75,0 Z" fill="currentColor"/>
+              <path d="M -75,0 C -75,-40 -20,-40 20,-36 C 60,-32 80,-18 80,0 C 80,18 60,32 20,36 C -20,40 -75,40 -75,0 Z" fill="var(--paper)" transform="translate(2,0) scale(0.8)"/>
+              <ellipse cx="-46" cy="-8" rx="9" ry="6.5" fill="currentColor"/>
+              <ellipse cx="-28" cy="8" rx="9" ry="6.5" fill="var(--paper)" stroke="currentColor" stroke-width="2.5"/>
+              <ellipse cx="-10" cy="-8" rx="9" ry="6.5" fill="currentColor"/>
+              <ellipse cx="8" cy="8" rx="9" ry="6.5" fill="currentColor"/>
+              <ellipse cx="26" cy="-8" rx="9" ry="6.5" fill="var(--paper)" stroke="currentColor" stroke-width="2.5"/>
+              <ellipse cx="44" cy="8" rx="9" ry="6.5" fill="currentColor"/>
+            </g>
+          </svg>
+          <p>Read the pawpaw seeds as dark for 1 and light for 0. You get 101101, which is 45 in binary: the handshake answer.</p>
         </div>
-        <ul class="chips">
-          <li>Free for every family</li>
-          <li>No sign-up for library events</li>
-          <li>Run by student volunteers</li>
-        </ul>
+        <dl class="stats">
+          <div><dt>Free events in our first year</dt><dd>7</dd></div>
+          <div><dt>Held at the Wells Library in Albany</dt><dd>4</dd></div>
+          <div><dt>Held in neighborhoods for older kids</dt><dd>3</dd></div>
+          <div><dt>Student volunteer instructors</dt><dd>12+</dd></div>
+          <div><dt>Students in the Guild</dt><dd>10</dd></div>
+          <div><dt>Cost to any family</dt><dd>$0</dd></div>
+        </dl>
       </div>
 
-      <article class="pz" data-answer="45" data-hint="Start with just one kid. How many hands does that kid shake? Now think about what happens when all ten do the same.">
-        <div class="pz-head">
-          <p class="pz-tag">Puzzle 1 · Warm-up</p>
-          <p class="pz-state">Unsolved</p>
-        </div>
-        <p class="pz-q">Ten kids show up to the Albany-Athens Puzzle Circle. Every kid shakes hands with every other kid exactly once. How many handshakes happen?</p>
-        <form class="pz-form" novalidate>
-          <label class="sr" for="a1">Your answer</label>
-          <input id="a1" inputmode="numeric" autocomplete="off" placeholder="?">
-          <button class="btn small dark" type="submit">Check</button>
-        </form>
-        <p class="pz-msg" role="status" aria-live="polite"></p>
-        <div class="pz-tools">
-          <button class="linkish" type="button" data-hint-btn>Need a hint?</button>
-          <button class="linkish" type="button" data-reveal-btn>Show the answer</button>
-        </div>
-        <div class="pz-explain" hidden>
-          <p><strong>45.</strong> Each kid shakes nine hands, which gives ninety. But that counts every handshake twice, once from each side, so halve it. This is the same reasoning that later gets called a combination, and a nine-year-old can get there without the word.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-
-  <div class="tilebar" aria-hidden="true"></div>
-
-  <div class="score" aria-label="Albany-Athens Puzzle Circle by the numbers">
-    <div class="wrap">
-      <div class="stat"><b>7</b><span>free events last year</span></div>
-      <div class="stat"><b>4</b><span>of them at the Wells Library in Albany</span></div>
-      <div class="stat"><b>10+</b><span>volunteer instructors from local high schools</span></div>
-      <div class="stat"><b>$0</b><span>cost to any family, always</span></div>
-    </div>
-  </div>
-
-  <section id="play" class="block">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker">Puzzle break</p>
-        <h2>Solve all three to complete the circle.</h2>
-        <p>These are the kind of problems we bring to events. Grown-ups are welcome to play too.</p>
-      </div>
-
-      <div class="progress" aria-live="polite">
-        <div class="slots" aria-hidden="true">
-          <svg><use href="#slot"/></svg>
-          <svg><use href="#slot"/></svg>
-          <svg><use href="#slot"/></svg>
-        </div>
-        <p><span id="count">0</span> of 3 solved</p>
-      </div>
-
-      <div class="play-grid">
-        <article class="pz c2" data-answer="30" data-hint="Look at the gaps between the numbers: 4, 6, 8… Do you see how the gaps are changing?">
-          <div class="pz-head">
-            <p class="pz-tag">Puzzle 2 · Patterns</p>
-            <p class="pz-state">Unsolved</p>
-          </div>
-          <p class="pz-q">What number comes next in this pattern?</p>
-          <ul class="pz-seq" aria-label="2, 6, 12, 20, blank">
-            <li>2</li><li>6</li><li>12</li><li>20</li><li class="blank">?</li>
-          </ul>
-          <form class="pz-form" novalidate>
-            <label class="sr" for="a2">Your answer</label>
-            <input id="a2" inputmode="numeric" autocomplete="off" placeholder="?">
-            <button class="btn small dark" type="submit">Check</button>
-          </form>
-          <p class="pz-msg" role="status" aria-live="polite"></p>
-          <div class="pz-tools">
-            <button class="linkish" type="button" data-hint-btn>Need a hint?</button>
-            <button class="linkish" type="button" data-reveal-btn>Show the answer</button>
-          </div>
-          <div class="pz-explain" hidden>
-            <p><strong>30.</strong> The gaps grow by two each time: 4, 6, 8, and so the next gap is 10. Another way to see it: 1×2, 2×3, 3×4, 4×5, and next comes 5×6.</p>
-          </div>
-        </article>
-
-        <article class="pz c3" data-answer="8" data-hint="Pretend every animal is a chicken. How many legs would that be? Then see how many legs you are short.">
-          <div class="pz-head">
-            <p class="pz-tag">Puzzle 3 · Logic</p>
-            <p class="pz-state">Unsolved</p>
-          </div>
-          <p class="pz-q">A farm has chickens and cows. Together they have 20 heads and 56 legs. How many cows are on the farm?</p>
-          <form class="pz-form" novalidate>
-            <label class="sr" for="a3">Your answer</label>
-            <input id="a3" inputmode="numeric" autocomplete="off" placeholder="?">
-            <button class="btn small dark" type="submit">Check</button>
-          </form>
-          <p class="pz-msg" role="status" aria-live="polite"></p>
-          <div class="pz-tools">
-            <button class="linkish" type="button" data-hint-btn>Need a hint?</button>
-            <button class="linkish" type="button" data-reveal-btn>Show the answer</button>
-          </div>
-          <div class="pz-explain" hidden>
-            <p><strong>8 cows.</strong> If all 20 animals were chickens there would be 40 legs, but there are 56, so 16 legs are missing. Each cow swaps a chicken’s 2 legs for 4, adding 2, so 16 ÷ 2 = 8 cows (and 12 chickens).</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="win" id="win" role="status">
-        <p>Circle complete! That is exactly how a Puzzle Circle event feels. Come to the next one and bring a friend.</p>
+      <div class="statement">
+        <span class="c" aria-hidden="true"></span><span class="c" aria-hidden="true"></span><span class="c" aria-hidden="true"></span><span class="c" aria-hidden="true"></span>
+        <h2 id="about-h">Free math for any kid in Athens County. Students teach it, and nobody pays.</h2>
+        <p>The Albany-Athens Puzzle Circle runs puzzle events at the library and around the county, plus a small cohort that trains for competitions. We do the kind of math nobody assigns: puzzles, games and problems worth arguing about.</p>
       </div>
     </div>
   </section>
 
-  <section id="levels" class="block alt">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker">Two ways to take part</p>
-        <h2>Start here, then go further.</h2>
+  <section class="sec" id="more" aria-labelledby="more-h">
+    <span class="tag l" aria-hidden="true">Puzzle break</span>
+    <span class="tag r" aria-hidden="true">Grown-ups welcome</span>
+    <div class="in teaser">
+      <div class="txt">
+        <h2 class="h2" id="more-h">Three more puzzles</h2>
+        <p class="lede">The kind of problems we bring to events. Each one checks your answer and has a hint if you get stuck.</p>
+        <a class="btn paper" href="puzzles.html">Open the puzzles</a>
       </div>
-      <div class="levels">
-        <article class="level one">
-          <span class="badge">Level 1 · Start here</span>
+      <ul class="tease">
+        <li><a href="puzzles.html#patterns"><span class="k">Patterns</span><span class="q">What number comes next: 2, 6, 12, 20, and then?</span></a></li>
+        <li><a href="puzzles.html#logic"><span class="k">Logic</span><span class="q">20 heads and 56 legs on a farm of chickens and cows. How many cows?</span></a></li>
+        <li><a href="puzzles.html#counting"><span class="k">Counting</span><span class="q">Six pawpaw seeds, each dark or light. How many different rows?</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="ways" aria-labelledby="ways-h">
+    <span class="tag l" aria-hidden="true">Ways in</span>
+    <span class="tag r" aria-hidden="true">Start here, go further</span>
+    <div class="in">
+      <h2 class="h2" id="ways-h">Two ways to take part</h2>
+      <div class="ways">
+        <div class="way">
+          <p class="step">Start here</p>
           <h3>Library events</h3>
-          <p>A couple of hours of puzzles, games, and problems, with a separate track for elementary kids and for middle schoolers. Bring a friend. You do not need to be good at math, and you do not need to have come before.</p>
-          <ul>
-            <li>Open to anyone</li>
-            <li>No sign-up</li>
-            <li>Free</li>
-          </ul>
-        </article>
-        <article class="level two">
-          <span class="badge">Level 2 · Go further</span>
-          <h3>The cohort</h3>
-          <p>A small group that meets online between sessions and in person once a month, working through real problem-solving and heading to the Math Kangaroo competition in March. For most of them it will be the first competition they have ever entered.</p>
-          <ul>
-            <li>Around ten students, by application</li>
-            <li>Applications open once a year</li>
-            <li>Online between sessions, in person monthly</li>
-          </ul>
-        </article>
+          <p>A couple of hours of puzzles, games and problems. Elementary events are at the Wells Library in Albany. Events for middle and high schoolers happen in neighborhoods around the county. Bring a friend. You don't need to be good at math or to have come before.</p>
+          <dl class="facts">
+            <dt>Who</dt><dd>Any kid, plus their grown-ups</dd>
+            <dt>Sign-up</dt><dd>None. Just turn up.</dd>
+            <dt>Cost</dt><dd>Free</dd>
+          </dl>
+        </div>
+        <div class="way">
+          <p class="step">Go further</p>
+          <h3>The Guild</h3>
+          <p>A cohort of ten students who check in online every week and meet in person once a month. They work through real problem solving and head to Math Kangaroo on Thursday, March 18, 2027. For most of them it will be the first competition they have entered.</p>
+          <dl class="facts">
+            <dt>Size</dt><dd>10 students</dd>
+            <dt>Joining</dt><dd>Applications open once a year</dd>
+            <dt>Meets</dt><dd>Weekly online, monthly at the Athens library</dd>
+          </dl>
+          <p><a class="textlink" href="#join">Hear when applications open</a></p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="parents" class="block">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker">For parents and teachers</p>
-        <h2>What families ask us most.</h2>
+  <section class="sec" id="families" aria-labelledby="fam-h">
+    <span class="tag l" aria-hidden="true">For families</span>
+    <span class="tag r" aria-hidden="true">And teachers</span>
+    <div class="in faq">
+      <div style="display:grid;gap:16px">
+        <h2 class="h2" id="fam-h">What families ask us</h2>
+        <p class="lede">Something missing? Write to us and we'll answer it here too.</p>
       </div>
-      <div class="faq">
-        <details open>
-          <summary>Does it cost anything?</summary>
-          <p>No. Every event is free to every family, and always will be. Nobody who teaches is paid.</p>
-        </details>
-        <details>
-          <summary>Do we need to sign up for a library event?</summary>
-          <p>No. Library events are open to anyone with no sign-up. Turn up, or write to us first if you would rather know what to expect.</p>
-        </details>
-        <details>
-          <summary>My child is not “a math kid.” Is this still for them?</summary>
-          <p>Yes. If your child is somewhere between bored in math class and obsessed with it, this is for them. You do not need to be good at math, and you do not need to have come before.</p>
-        </details>
-        <details>
-          <summary>What ages is it for?</summary>
-          <p>Library events have a separate track for elementary kids and another for middle schoolers, so everyone works on problems that fit them.</p>
-        </details>
-        <details>
-          <summary>Who is actually teaching?</summary>
-          <p>More than a dozen volunteer instructors who are students at Albany and Athens high schools. They are advised by a mathematics professor at Ohio University and several doctorates.</p>
-        </details>
-        <details>
-          <summary>What is the cohort, and how do we apply?</summary>
-          <p>The cohort is a group of ten students who meet online between sessions and in person once a month, and who compete in the Math Kangaroo competition in March. Applications open once a year. Send us a note and we will let you know when.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section id="why" class="block alt">
-    <div class="wrap story">
       <div>
-        <p class="kicker">Why this exists</p>
-        <h2>The talent was already here.</h2>
-        <p>A local school eliminated its gifted program. After that, a kid around here who loved math had nowhere to take it. Not a team, not a club, not a competition. The talent did not go anywhere, but the path did.</p>
-        <p>So a few of us built one. Two students who come to the Albany-Athens Puzzle Circle have since been named National Math Stars, which is roughly the point: the ability was already here, sitting in ordinary classrooms in a rural county, waiting for somebody to hand it a harder problem.</p>
-      </div>
-      <blockquote class="pull"><span>We think most kids do not dislike math. They dislike the version of it they were given.</span></blockquote>
-    </div>
-  </section>
-
-  <section id="who" class="block">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker">Who runs it</p>
-        <h2>Students teaching students, with grown-up backup.</h2>
-      </div>
-      <div class="crew">
-        <div class="who">
-          <div class="ico" aria-hidden="true">12+</div>
-          <h3>Volunteer instructors</h3>
-          <p>More than a dozen students at Albany and Athens high schools run the tables at every event.</p>
-        </div>
-        <div class="who">
-          <div class="ico" aria-hidden="true">∑</div>
-          <h3>Senior advisors</h3>
-          <p>A mathematics professor at Ohio University and several PhD students.</p>
-        </div>
-        <div class="who">
-          <div class="ico" aria-hidden="true">$0</div>
-          <h3>Nobody is paid</h3>
-          <p>Every event is free to every family, and always will be.</p>
-        </div>
+        <details><summary>Does it cost anything?</summary><div class="body">No. Every event is free to every family. Nobody who teaches is paid.</div></details>
+        <details><summary>Do we need to sign up for a library event?</summary><div class="body">No. Library events are open to anyone. Turn up, or write first if you'd like to know what to expect.</div></details>
+        <details><summary>My child isn't a "math kid." Is this for them?</summary><div class="body">Yes. If your child is anywhere between bored in math class and obsessed with it, this is for them.</div></details>
+        <details><summary>What ages is it for?</summary><div class="body">Library events in Albany are for elementary kids. Neighborhood events are for middle and high schoolers, so everyone works on problems that fit.</div></details>
+        <details><summary>Who is teaching?</summary><div class="body">More than a dozen volunteer instructors, all students at high schools in Albany and Athens. A mathematics professor at Ohio University and several PhD students advise them.</div></details>
+        <details><summary>What is the Guild, and how do we apply?</summary><div class="body">The Guild is a group of ten students who meet online every week and in person once a month, and who compete in Math Kangaroo in March. Applications open once a year. Leave your email below and we'll tell you when.</div></details>
       </div>
     </div>
   </section>
 
-  <section id="join" class="block alt">
-    <div class="wrap join">
-      <div>
-        <p class="kicker">Come along</p>
-        <h2>Your move.</h2>
-        <p>The next event is at the Wells Library in Albany. Turn up, or write first if you would rather know what to expect. If your child is somewhere between bored in math class and obsessed with it, this is for them.</p>
-        <p>Cohort applications open once a year. If you would like to hear when, send us a note and we will let you know.</p>
+  <section class="sec why" id="why" aria-labelledby="why-h">
+    <span class="tag l" aria-hidden="true">Why this exists</span>
+    <span class="tag r" aria-hidden="true">Who runs it</span>
+    <div class="in">
+      <h2 class="vh" id="why-h">Why this exists</h2>
+      <blockquote>Most kids don’t dislike math. They dislike the version they were given.</blockquote>
+      <div class="cols">
+        <div>
+          <p>A local school eliminated its gifted program. After that, a kid around here who loved math had nowhere to take it: no team, no club, no competition. The talent stayed. The path went away.</p>
+          <p>So a few of us built one, starting with puzzles at the library.</p>
+        </div>
+        <div>
+          <p>Two students who come to the Puzzle Circle have since been named <a href="https://www.nationalmathstars.org/" target="_blank" rel="noopener">National Math Stars</a>. That's the point. The ability was already here, in ordinary classrooms in a rural county, waiting for someone to hand it a harder problem.</p>
+        </div>
       </div>
-      <div class="cta">
-        <h3>Write to the Albany-Athens Puzzle Circle</h3>
-        <p>Questions from families, teachers, or anyone curious, email Hardy Wang at:</p>
-        <p><a class="mail" href="mailto:wanghardy10@gmail.com">wanghardy10@gmail.com</a></p>
-      </div>
+      <dl class="people">
+        <div><dt>12+ instructors</dt><dd>High school students from Albany and Athens run the tables at every event.</dd></div>
+        <div><dt>Advisors</dt><dd>A mathematics professor at Ohio University and several PhD students.</dd></div>
+        <div><dt>Hardy Wang</dt><dd>Founder and president. Started the Circle as a high school student in Albany.</dd></div>
+      </dl>
     </div>
   </section>
 
-  <section id="help" class="block">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker">Help out</p>
-        <h2>Add a piece.</h2>
-      </div>
+  <section class="sec dusk" id="help" aria-labelledby="help-h">
+    <span class="tag l" aria-hidden="true">Help out</span>
+    <span class="tag r" aria-hidden="true">Teach or fund</span>
+    <div class="in">
+      <h2 class="h2" id="help-h">Add a piece</h2>
       <div class="help">
-        <article class="card">
+        <div>
           <h3>Teach</h3>
-          <p>If you are a high school student who likes math, you can help volunteer at an event. You do not need to be the best mathematician in the room. You need to be able to ask a good question and then wait.</p>
-        </article>
-        <article class="card">
+          <p>If you're a high school student who likes math, you can run a table at an event. You don't need to be the best mathematician in the room. You need to ask a good question and then wait.</p>
+          <p style="margin-top:18px"><a class="textlink" href="#join">Tell us you'd like to teach</a></p>
+        </div>
+        <div>
           <h3>Fund</h3>
-          <div class="budget"><b>$2,650</b><span>for our whole year, about $265 per student</span></div>
-          <p>That covers workbooks, competition registration fees, and laptops for students who do not have one at home. If your organization funds this kind of work, we would like to talk.</p>
-        </article>
+          <p class="money">$2,650</p>
+          <p>runs our whole year. Each open event costs about $150 to put on, and the rest pays for Guild workbooks, competition fees and laptops for students who don't have one at home. If your organization funds this kind of work, we'd like to talk.</p>
+          <p style="margin-top:18px"><a class="textlink" href="#join">Start a conversation</a></p>
+        </div>
       </div>
     </div>
   </section>
 
+  <section class="sec" id="join" aria-labelledby="join-h">
+    <span class="tag l" aria-hidden="true">Come along</span>
+    <span class="tag r" aria-hidden="true">Write to Hardy</span>
+    <div class="in">
+      <h2 class="joinmark" id="join-h"><span class="vh">Join us</span><span class="lean" aria-hidden="true"><span>J</span><span>O</span><span>I</span><span>N</span><span class="gap"></span><span>U</span><span>S</span></span></h2>
+      <div class="join">
+      <div class="side-info">
+        <p class="lede">Tell us who you are and we'll send the next event date, Guild application news, or whatever you asked about.</p>
+        <div>
+          <p class="small">Or email Hardy Wang directly:</p>
+          <p class="mail"><code id="addr">wanghardy10@gmail.com</code> <button class="btn ghost" type="button" id="copyAddr" style="color:var(--text);border-color:var(--text);min-height:40px;font-size:14px;padding:0 14px">Copy</button></p>
+        </div>
+      </div>
+      <div id="formWrap">
+        <form id="joinForm" novalidate>
+          <div class="two">
+            <div class="field">
+              <label for="f-name">Your name</label>
+              <input id="f-name" name="name" autocomplete="name" aria-describedby="e-name">
+              <p class="err" id="e-name"></p>
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" aria-describedby="e-email">
+              <p class="err" id="e-email"></p>
+            </div>
+          </div>
+          <fieldset class="field" aria-describedby="e-int">
+            <legend>I'd like to hear about</legend>
+            <div class="checks">
+              <label><input type="checkbox" name="int" value="the next library event"> The next library event</label>
+              <label><input type="checkbox" name="int" value="Guild applications"> Guild applications</label>
+              <label><input type="checkbox" name="int" value="teaching at an event"> Teaching at an event</label>
+              <label><input type="checkbox" name="int" value="funding the program"> Funding the program</label>
+            </div>
+            <p class="err" id="e-int"></p>
+          </fieldset>
+          <div class="field">
+            <label for="f-grade">Child's grade, if you're a parent</label>
+            <select id="f-grade" name="grade">
+              <option value="">Not applicable</option>
+              <option>Kindergarten</option><option>1st grade</option><option>2nd grade</option><option>3rd grade</option><option>4th grade</option><option>5th grade</option><option>6th grade</option><option>7th grade</option><option>8th grade</option><option>High school</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-note">Anything else? <span class="small">(optional)</span></label>
+            <textarea id="f-note" name="note"></textarea>
+          </div>
+          <button class="btn" type="submit">Prepare my note</button>
+        </form>
+        <div class="done" id="done" hidden tabindex="-1">
+          <h3>Your note is ready</h3>
+          <p>This page can't send mail yet. Copy the note and send it to <strong>wanghardy10@gmail.com</strong>.</p>
+          <pre id="noteText"></pre>
+          <div class="row">
+            <button class="btn" type="button" id="copyNote">Copy the note</button>
+            <a class="btn ghost" id="mailLink" href="#">Open in my email app</a>
+            <button class="btn ghost" type="button" id="editNote">Edit</button>
+          </div>
+          <p class="small" id="copyMsg" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
 </main>
 
-<div class="tilebar" aria-hidden="true"></div>
 <footer>
-  <div class="wrap">
-    <svg aria-hidden="true"><use href="#logo"/></svg>
+  <svg class="foothills strip" data-seed="131" aria-hidden="true"></svg>
+  <div class="in">
     <div>
-      <p class="fname">Albany-Athens Puzzle Circle</p>
-      <p>Albany, Ohio. Free math, run by volunteers, for anyone in Athens County who wants it.</p>
+      <p class="name">Albany-Athens Puzzle Circle</p>
+      <p>Albany, Ohio. Free math, run by student volunteers, for any kid in Athens County who wants it.</p>
     </div>
+    <p><a href="#top">Back to the circle</a></p>
   </div>
 </footer>
 
+<script src="site.js"></script>
 <script>
-  (function () {
-    var puzzles = document.querySelectorAll('.pz');
-    var count = document.getElementById('count');
-    var slots = document.querySelectorAll('.progress .slots svg');
-    var win = document.getElementById('win');
-    var solved = 0;
+(() => {
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isPhone = () => matchMedia('(max-width:760px)').matches;
+  const css = n => getComputedStyle(root).getPropertyValue(n).trim();
+  const setVW = window.PC.setVW;
 
-    function markSolved(pz) {
-      if (pz.classList.contains('solved')) return;
-      pz.classList.add('solved');
-      pz.querySelector('.pz-state').textContent = 'Solved';
-      solved += 1;
-      count.textContent = solved;
-      var slot = slots[solved - 1];
-      if (slot) {
-        slot.classList.add('on', 'pop');
+  const {rng, SVGNS, ridgeLayers, fitTitles, measureCap} = window.PC;
+
+  /* ---------- hills ---------- */
+  function drawHills(){
+    const back = document.getElementById('hillsBack'), front = document.getElementById('hillsFront');
+    [back, front].forEach(s => s.textContent = '');
+    const rb = back.getBoundingClientRect(); const W = Math.max(320, rb.width), H = Math.max(120, rb.height);
+    const sc = isPhone() ? 0.9 : W / 1440;
+    back.setAttribute('viewBox', `0 0 ${W} ${H}`); front.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const step = Math.max(8, W/90);
+    const L = [
+      {svg: back,  base: H*0.30, amp: H*0.10, seed: 11, fill: css('--ridge-1')},
+      {svg: back,  base: H*0.44, amp: H*0.09, seed: 29, fill: css('--ridge-2')},
+      {svg: front, base: H*0.66, amp: H*0.075, seed: 47, fill: css('--ridge-3'), trees: [css('--leaf-amber'), css('--leaf-red'), css('--leaf-olive'), '#B4672A'], dens: 1},
+      {svg: front, base: H*0.86, amp: H*0.05, seed: 83, fill: css('--ridge-4'), trees: [css('--leaf-gold'), css('--leaf-amber'), css('--leaf-red'), css('--leaf-olive')], dens: 1.15, big: 1.35, trunk: true}
+    ];
+    ridgeLayers(back, W, H, L.filter(l => l.svg === back), sc, step);
+    ridgeLayers(front, W, H, L.filter(l => l.svg === front), sc, step);
+  }
+
+  /* ---------- handshake circle ---------- */
+  const N = 10, R = 80;
+  const ring = document.getElementById('ring'), chordsSvg = document.getElementById('chords');
+  const countEl = document.getElementById('count'), countLabel = document.getElementById('countLabel');
+  const statusEl = document.getElementById('status');
+  const drawBtn = document.getElementById('drawRest');
+  const pts = [...Array(N)].map((_, i) => { const a = -Math.PI/2 + i * 2*Math.PI/N; return [R*Math.cos(a), R*Math.sin(a)]; });
+  const key = (a, b) => a < b ? `${a}-${b}` : `${b}-${a}`;
+  const ALL = [];
+  for (let s = 1; s <= 5; s++) for (let a = 0; a < N; a++){ const b = (a + s) % N; const k = key(a, b); if (!ALL.includes(k)) ALL.push(k); }
+  const mine = new Set(); let auto = new Set(); const lines = new Map();
+  let sel = null, rubber = null, dragging = false, scrollP = 0, autoFloor = 0, autoAll = false, solvedShown = false;
+
+  const KIDS = [
+    {hair: 'crop',     hc: '#2B1D14', skin: '#E0A97A', shirt: '#5E6B36', num: '#FBF1DE'},
+    {hair: 'pigtails', hc: '#C98B3A', skin: '#F2C9A0', shirt: '#8A2C17', num: '#FBF1DE'},
+    {hair: 'cap',      hc: '#2F5A44', skin: '#8A5634', shirt: '#CF8A2E', num: '#16211D'},
+    {hair: 'curly',    hc: '#1A1512', skin: '#B97A4E', shirt: '#3E5C76', num: '#FBF1DE'},
+    {hair: 'bun',      hc: '#6B3E1F', skin: '#F5D3B5', shirt: '#2F5A44', num: '#FBF1DE'},
+    {hair: 'spiky',    hc: '#A4421F', skin: '#F2C9A0', shirt: '#16211D', num: '#FBF1DE'},
+    {hair: 'long',     hc: '#2B1D14', skin: '#E0A97A', shirt: '#E3B341', num: '#16211D'},
+    {hair: 'bob',      hc: '#1A1512', skin: '#F0C49A', shirt: '#B4672A', num: '#16211D'},
+    {hair: 'ponytail', hc: '#C98B3A', skin: '#B97A4E', shirt: '#5E6B36', num: '#FBF1DE'},
+    {hair: 'crop',     hc: '#6B3E1F', skin: '#8A5634', shirt: '#8A2C17', num: '#FBF1DE'}
+  ];
+  const INK = '#16211D', SW = 'stroke="' + INK + '" stroke-width="1.3" stroke-linejoin="round"';
+  const CROP = 'M11.2 16 Q11.5 7.6 20 7.6 Q28.5 7.6 28.8 16 Q24.5 12.2 20 12.6 Q15.5 12.2 11.2 16Z';
+  function hairSvg(k){
+    const f = `fill="${k.hc}" ${SW}`;
+    switch (k.hair){
+      case 'crop': return `<path d="${CROP}" ${f}/>`;
+      case 'pigtails': return `<circle cx="9.6" cy="20" r="3.2" ${f}/><circle cx="30.4" cy="20" r="3.2" ${f}/><path d="${CROP}" ${f}/>`;
+      case 'bun': return `<circle cx="20" cy="6.6" r="3.6" ${f}/><path d="${CROP}" ${f}/>`;
+      case 'ponytail': return `<ellipse cx="30.4" cy="19.5" rx="2.8" ry="5.6" transform="rotate(-18 30.4 19.5)" ${f}/><path d="${CROP}" ${f}/>`;
+      case 'cap': return `<path d="M11.2 14.8 Q11.4 6.6 20 6.6 Q28.6 6.6 28.8 14.8Z" ${f}/><path d="M18 14.4 L31.5 14.4 Q32.6 16.2 30.4 16.4 L18 16.4Z" ${f}/>`;
+      case 'spiky': return `<path d="M11.2 16 L11.8 10 L14.5 12 L16 7 L18.6 10.6 L20.8 6.3 L22.6 10.6 L25.4 7.4 L26.4 11.6 L28.6 9.8 L28.8 16 Q24.5 12.4 20 12.8 Q15.5 12.4 11.2 16Z" ${f}/>`;
+      case 'bob': return `<path d="M10.6 23 Q9 8.2 20 7.6 Q31 8.2 29.4 23 L27.6 23 Q27.8 13.4 20 13.2 Q12.2 13.4 12.4 23Z" ${f}/>`;
+      case 'long': return `<path d="M11 15 Q11.6 7.6 20 7.6 Q28.4 7.6 29 15 Q24.5 11.6 20 12 Q15.5 11.6 11 15Z" ${f}/>`;
+      case 'curly': {
+        const c = [[12.4,13],[15.6,9.4],[20,8.2],[24.4,9.4],[27.6,13],[11.4,17.2],[28.6,17.2]];
+        return c.map(([x,y]) => `<circle cx="${x}" cy="${y}" r="4.9" fill="${INK}"/>`).join('') + c.map(([x,y]) => `<circle cx="${x}" cy="${y}" r="3.6" fill="${k.hc}"/>`).join('');
       }
-      if (solved === puzzles.length) win.classList.add('show');
     }
+    return '';
+  }
+  function kidSvg(k, n){
+    const arm = (side) => {
+      const x0 = side === 'l' ? 12.5 : 27.5, x1 = side === 'l' ? 9.6 : 30.4;
+      return `<g class="arm ${side}"><path d="M${x0} 31 L${x1} 42" stroke="${INK}" stroke-width="5.6" stroke-linecap="round"/><path d="M${x0} 31 L${x1} 42" stroke="${k.shirt}" stroke-width="3.1" stroke-linecap="round"/><circle cx="${x1}" cy="43.2" r="2.3" fill="${k.skin}" ${SW}/></g>`;
+    };
+    const backHair = k.hair === 'long' ? `<path d="M10.2 30 Q8.4 8 20 7.4 Q31.6 8 29.8 30Z" fill="${k.hc}" ${SW}/>` : '';
+    return `<svg class="kid" viewBox="0 0 40 50" aria-hidden="true">
+      <ellipse class="shadow" cx="20" cy="47.6" rx="12.5" ry="2.4"/>
+      ${arm('l')}${arm('r')}${backHair}
+      <path d="M9.4 47 L10.6 33.4 Q11.2 28 16.4 27.6 L23.6 27.6 Q28.8 28 29.4 33.4 L30.6 47Z" fill="${k.shirt}" ${SW}/>
+      <text x="20" y="43" text-anchor="middle" font-family="Andika, sans-serif" font-weight="700" font-size="9.5" fill="${k.num}">${n}</text>
+      <circle cx="20" cy="17.5" r="9" fill="${k.skin}" ${SW}/>
+      <circle cx="16.8" cy="18.8" r="1.05" fill="${INK}"/><circle cx="23.2" cy="18.8" r="1.05" fill="${INK}"/>
+      ${hairSvg(k)}
+    </svg>`;
+  }
+  const dots = pts.map(([x, y], i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'dot';
+    b.style.left = (50 + x/2) + '%'; b.style.top = (50 + y/2) + '%';
+    b.setAttribute('aria-label', `Kid ${i+1}`);
+    b.innerHTML = kidSvg(KIDS[i], i + 1);
+    ring.appendChild(b); return b;
+  });
 
-    Array.prototype.forEach.call(puzzles, function (pz) {
-      var form = pz.querySelector('form');
-      var input = pz.querySelector('input');
-      var msg = pz.querySelector('.pz-msg');
-      var explain = pz.querySelector('.pz-explain');
-      var answer = Number(pz.getAttribute('data-answer'));
-
-      function say(text, cls) {
-        msg.textContent = text;
-        msg.className = 'pz-msg ' + cls;
-      }
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var raw = input.value.trim();
-        if (raw === '') { say('Type a number, then press Check.', 'hint'); return; }
-        if (Number(raw) === answer) {
-          say('Yes! ' + answer + ' is right.', 'ok');
-          explain.hidden = false;
-          markSolved(pz);
-        } else {
-          say('Not quite. Try again, or ask for a hint.', 'no');
-        }
-      });
-
-      pz.querySelector('[data-hint-btn]').addEventListener('click', function () {
-        say(pz.getAttribute('data-hint'), 'hint');
-      });
-      pz.querySelector('[data-reveal-btn]').addEventListener('click', function () {
-        explain.hidden = !explain.hidden;
-      });
+  function lineEl(k, cls){
+    const [a, b] = k.split('-').map(Number);
+    const l = document.createElementNS(SVGNS, 'line');
+    l.setAttribute('x1', pts[a][0]); l.setAttribute('y1', pts[a][1]);
+    l.setAttribute('x2', pts[b][0]); l.setAttribute('y2', pts[b][1]);
+    l.setAttribute('class', cls);
+    chordsSvg.insertBefore(l, chordsSvg.firstChild);
+    if (!reduce && l.animate){
+      const len = Math.hypot(pts[a][0]-pts[b][0], pts[a][1]-pts[b][1]);
+      l.style.strokeDasharray = len; l.animate([{strokeDashoffset: len}, {strokeDashoffset: 0}], {duration: 380, easing: 'cubic-bezier(.2,.8,.2,1)'});
+    }
+    return l;
+  }
+  function degreeOf(i){ let d = 0; ALL.forEach(k => { if ((mine.has(k) || auto.has(k)) && k.split('-').map(Number).includes(i)) d++; }); return d; }
+  function render(){
+    // auto set from scroll or button
+    let want;
+    if (autoAll) want = ALL.filter(k => !mine.has(k));
+    else {
+      const span = Math.max(0.0001, 1 - autoFloor);
+      const n = autoFloor >= 1 ? 0 : Math.floor(Math.min(1, Math.max(0, (scrollP - autoFloor) / span)) * ALL.length + 1e-6);
+      want = ALL.slice(0, n).filter(k => !mine.has(k));
+    }
+    const wantSet = new Set(want);
+    auto.forEach(k => { if (!wantSet.has(k)){ const l = lines.get(k); if (l) l.remove(); lines.delete(k); } });
+    want.forEach(k => { if (!auto.has(k) && !lines.has(k)) lines.set(k, lineEl(k, 'auto')); });
+    auto = wantSet;
+    const total = mine.size + auto.size;
+    countEl.textContent = total;
+    countLabel.textContent = total === 1 ? 'handshake so far' : (total === 45 ? 'handshakes. That’s all of them.' : 'handshakes so far');
+    dots.forEach((d, i) => d.classList.toggle('full', degreeOf(i) === N - 1));
+    if (total === 45){
+      ring.classList.add('solved'); drawBtn.hidden = true;
+      if (!solvedShown){ solvedShown = true;
+        statusEl.textContent = 'Each kid shakes 9 hands, and 10\u00a0\u00d7\u00a09\u00a0=\u00a090. That counts every handshake twice, once from each side, so there are 90\u00a0\u00f7\u00a02\u00a0=\u00a045.'; }
+    } else {
+      ring.classList.remove('solved'); solvedShown = false; drawBtn.hidden = false;
+      if (auto.size && !autoAll && !mine.size) statusEl.textContent = 'Keep scrolling and the rest draw themselves, neighbors first.';
+      else if (!total) statusEl.textContent = 'How many will there be? Guess first, then start drawing.';
+    }
+  }
+  function say(t){ statusEl.textContent = t; }
+  function connect(a, b){
+    if (a === b) return;
+    const k = key(a, b);
+    if (mine.has(k) || auto.has(k)){ say(`Kids ${Math.min(a,b)+1} and ${Math.max(a,b)+1} already shook hands.`); return; }
+    mine.add(k); lines.set(k, lineEl(k, 'mine'));
+    const total = mine.size + auto.size;
+    render();
+    if (total < 45){
+      const full = dots.filter((_, i) => degreeOf(i) === N-1).length;
+      say(full ? `Kids ${Math.min(a,b)+1} and ${Math.max(a,b)+1} shook hands. ${full === 1 ? 'One kid has' : full + ' kids have'} met everyone.` : `Kids ${Math.min(a,b)+1} and ${Math.max(a,b)+1} shook hands. Keep going.`);
+    }
+  }
+  function select(i){
+    dots.forEach(d => d.classList.remove('sel'));
+    sel = i; if (i !== null){ dots[i].classList.add('sel'); }
+  }
+  function toLocal(e){
+    const r = ring.getBoundingClientRect();
+    return [ (e.clientX - r.left) / r.width * 200 - 100, (e.clientY - r.top) / r.height * 200 - 100 ];
+  }
+  function nearest(x, y){
+    let best = null, bd = 1e9; pts.forEach(([px, py], i) => { const d = Math.hypot(px-x, py-y); if (d < bd){ bd = d; best = i; } });
+    return bd < 16 ? best : null;
+  }
+  dots.forEach((d, i) => {
+    d.addEventListener('pointerdown', e => {
+      e.preventDefault();
+      if (sel !== null && sel !== i){ connect(sel, i); select(null); return; }
+      select(i); dragging = true; ring.setPointerCapture(e.pointerId);
+      rubber = document.createElementNS(SVGNS, 'line'); rubber.setAttribute('class', 'rubber');
+      rubber.setAttribute('x1', pts[i][0]); rubber.setAttribute('y1', pts[i][1]);
+      rubber.setAttribute('x2', pts[i][0]); rubber.setAttribute('y2', pts[i][1]);
+      chordsSvg.appendChild(rubber);
+      say(`Kid ${i+1} picked. Now drag or tap to another kid.`);
     });
-  })();
-</script>
+    d.addEventListener('click', e => {
+      if (e.detail !== 0) return; // keyboard only
+      if (sel === null) { select(i); say(`Kid ${i+1} picked. Now pick another kid.`); }
+      else if (sel === i) { select(null); say('Pick cancelled.'); }
+      else { connect(sel, i); select(null); }
+    });
+  });
+  ring.addEventListener('pointermove', e => {
+    if (!dragging || !rubber) return;
+    const [x, y] = toLocal(e); rubber.setAttribute('x2', x); rubber.setAttribute('y2', y);
+  });
+  function endDrag(e){
+    if (!dragging) return; dragging = false;
+    if (rubber){ rubber.remove(); rubber = null; }
+    const [x, y] = toLocal(e); const j = nearest(x, y);
+    if (j !== null && j !== sel){ connect(sel, j); select(null); }
+  }
+  ring.addEventListener('pointerup', endDrag);
+  ring.addEventListener('pointercancel', () => { dragging = false; if (rubber){ rubber.remove(); rubber = null; } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && sel !== null){ select(null); say('Pick cancelled.'); } });
 
+  document.getElementById('reset').addEventListener('click', () => {
+    mine.forEach(k => { const l = lines.get(k); if (l) l.remove(); lines.delete(k); }); mine.clear();
+    autoAll = false; autoFloor = scrollP >= 0.999 ? 1 : scrollP; select(null);
+    render(); say('Cleared. How many handshakes do you think there will be?');
+  });
+  document.getElementById('drawRest').addEventListener('click', () => {
+    if (reduce){ autoAll = true; render(); return; }
+    const missing = ALL.filter(k => !mine.has(k) && !auto.has(k));
+    if (!missing.length) return;
+    let i = 0; say('Drawing the rest...');
+    const tick = () => {
+      const k = missing[i++]; if (!k) { autoAll = true; render(); return; }
+      auto.add(k); lines.set(k, lineEl(k, 'auto')); countEl.textContent = mine.size + auto.size;
+      setTimeout(tick, 40);
+    };
+    tick();
+  });
+
+  /* ---------- scroll beat ---------- */
+  const heroWrap = document.querySelector('.hero-wrap');
+  const tl1 = document.querySelector('.tl1'), tl2 = document.querySelector('.tl2');
+  let pSmooth = 0, rafOn = false;
+  function targetP(){
+    if (isPhone()) return 0;
+    const vh = innerHeight, hh = document.getElementById('hero').offsetHeight;
+    const start = Math.max(0, hh - vh);
+    return Math.min(1, Math.max(0, (scrollY - start - vh*0.04) / (vh * 0.62)));
+  }
+  function frame(){
+    const t = targetP();
+    pSmooth += (t - pSmooth) * (reduce ? 1 : 0.2);
+    if (Math.abs(t - pSmooth) < 0.001) pSmooth = t;
+    const prev = scrollP; scrollP = pSmooth;
+    if (scrollP < autoFloor) autoFloor = scrollP;
+    if (!autoAll && Math.floor(prev*45) !== Math.floor(scrollP*45)) render();
+    if (!reduce && !isPhone()){
+      const e = scrollP < .5 ? 4*scrollP**3 : 1 - (-2*scrollP+2)**3/2;
+      const u = parseFloat(getComputedStyle(root).getPropertyValue('--vw')) / 1440 || 1;
+      ring.style.transform = `scale(${1 + 0.1*e})`;
+      tl1.style.transform = `translateY(${-22*e*u}px)`;
+      tl2.style.transform = `translateY(${26*e*u}px)`;
+      document.getElementById('hillsFront').style.transform = `translateY(${36*e*u}px)`;
+    }
+    if (t !== pSmooth) requestAnimationFrame(frame); else rafOn = false;
+  }
+  function kick(){ if (!rafOn){ rafOn = true; requestAnimationFrame(frame); } }
+  addEventListener('scroll', kick, {passive: true});
+
+  /* ---------- falling leaves ---------- */
+  const cv = document.getElementById('leaves'), cx = cv.getContext('2d');
+  let leaves = [], heroVisible = true, lastT = 0;
+  function sizeCanvas(){
+    const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
+    cv.width = r.width * dpr; cv.height = r.height * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = isPhone() ? 9 : 18, cols = [css('--leaf-gold'), css('--leaf-amber'), '#F0D27A', css('--leaf-red')];
+    const R2 = rng(7);
+    leaves = [...Array(n)].map(() => ({x: R2()*r.width, y: R2()*r.height, s: 7 + R2()*9, vy: 14 + R2()*22, sway: 12 + R2()*26, ph: R2()*6, rot: R2()*6, vr: (R2()-.5)*1.4, c: cols[Math.floor(R2()*cols.length)]}));
+  }
+  function drawLeaves(t){
+    if (!heroVisible || document.hidden){ lastT = 0; requestAnimationFrame(drawLeaves); return; }
+    const dt = lastT ? Math.min(0.05, (t - lastT)/1000) : 0; lastT = t;
+    const W = cv.clientWidth, H = cv.clientHeight; cx.clearRect(0, 0, W, H);
+    leaves.forEach(l => {
+      l.y += l.vy*dt; l.ph += dt*0.9; l.rot += l.vr*dt;
+      if (l.y > H + 20){ l.y = -20; l.x = Math.random()*W; }
+      const x = l.x + Math.sin(l.ph)*l.sway;
+      cx.save(); cx.translate(x, l.y); cx.rotate(l.rot);
+      cx.beginPath(); cx.moveTo(-l.s*1.5, 0);
+      cx.quadraticCurveTo(-l.s*0.2, -l.s*0.8, l.s*1.5, 0);
+      cx.quadraticCurveTo(-l.s*0.2, l.s*0.8, -l.s*1.5, 0);
+      cx.fillStyle = l.c; cx.fill();
+      cx.beginPath(); cx.moveTo(-l.s*1.7, 0); cx.lineTo(l.s*1.3, 0); cx.strokeStyle = 'rgba(22,33,29,.35)'; cx.lineWidth = 1; cx.stroke();
+      cx.restore();
+    });
+    requestAnimationFrame(drawLeaves);
+  }
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(es => { heroVisible = es[0].isIntersecting; }).observe(document.getElementById('hero'));
+  }
+
+  /* ---------- load sequence ---------- */
+  function intro(){
+    if (reduce || !Element.prototype.animate) return;
+    const ease = 'cubic-bezier(.2,.8,.2,1)';
+    const a = (el, kf, o) => el && el.animate(kf, Object.assign({easing: ease, fill: 'backwards'}, o));
+    a(document.querySelector('.nav'), [{opacity: 0, transform: 'translateY(-12px)'}, {opacity: 1, transform: 'none'}], {duration: 700, delay: 80});
+    document.querySelectorAll('.tl svg').forEach((s, i) => a(s, [{transform: 'translateY(102%)'}, {transform: 'none'}], {duration: 1100, delay: 150 + i*140}));
+    a(document.getElementById('hillsBack'), [{transform: 'translateY(8%)'}, {transform: 'none'}], {duration: 1300});
+    a(document.querySelector('.ring .disc'), [{opacity: 0, transform: 'scale(.86)'}, {opacity: 1, transform: 'none'}], {duration: 1000, delay: 250});
+    dots.forEach((d, i) => a(d.querySelector('.kid'), [{transform: 'translate(-50%,-56%) scale(0)'}, {transform: 'translate(-50%,-56%) scale(1)'}], {duration: 520, delay: 600 + i*60, easing: 'cubic-bezier(.3,1.5,.5,1)'}));
+    a(document.getElementById('brief'), [{opacity: 0, transform: 'translateY(16px)'}, {opacity: 1, transform: 'none'}], {duration: 800, delay: 900});
+    a(document.getElementById('tally'), [{opacity: 0, transform: 'translateY(16px)'}, {opacity: 1, transform: 'none'}], {duration: 800, delay: 1000});
+    document.querySelectorAll('.side').forEach((s, i) => a(s, [{opacity: 0}, {opacity: 1}], {duration: 700, delay: 300 + i*40}));
+  }
+
+  /* ---------- join form ---------- */
+  const jf = document.getElementById('joinForm'), done = document.getElementById('done');
+  const addr = 'wanghardy10@gmail.com';
+  function copy(text, msgEl, ok){
+    const fallback = () => { if (msgEl) msgEl.textContent = 'Copy didn’t work here. Select the text and copy it yourself.'; };
+    try{ navigator.clipboard.writeText(text).then(() => { if (msgEl) msgEl.textContent = ok; }, fallback); }catch(e){ fallback(); }
+  }
+  document.getElementById('copyAddr').addEventListener('click', e => {
+    const b = e.currentTarget;
+    try{ navigator.clipboard.writeText(addr).then(() => { b.textContent = 'Copied'; setTimeout(() => b.textContent = 'Copy', 1600); }, () => { const r = document.createRange(); r.selectNodeContents(document.getElementById('addr')); getSelection().removeAllRanges(); getSelection().addRange(r); }); }catch(err){}
+  });
+  function setErr(id, inputEl, msg){ document.getElementById(id).textContent = msg; if (inputEl) inputEl.setAttribute('aria-invalid', msg ? 'true' : 'false'); }
+  jf.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = jf.elements.name.value.trim(), email = jf.elements.email.value.trim();
+    const ints = [...jf.querySelectorAll('input[name="int"]:checked')].map(i => i.value);
+    let first = null;
+    setErr('e-name', jf.elements.name, name ? '' : 'Add your name so we know who to write back to.'); if (!name) first = first || jf.elements.name;
+    const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    setErr('e-email', jf.elements.email, okEmail ? '' : (email ? 'That email is missing something. Use the form name@example.com.' : 'Add an email so we can reply.')); if (!okEmail) first = first || jf.elements.email;
+    setErr('e-int', null, ints.length ? '' : 'Pick at least one thing to hear about.'); if (!ints.length) first = first || jf.querySelector('input[name="int"]');
+    if (first){ first.focus(); return; }
+    const grade = jf.elements.grade.value, note = jf.elements.note.value.trim();
+    const list = ints.length > 1 ? ints.slice(0, -1).join(', ') + ' and ' + ints[ints.length-1] : ints[0];
+    const body = `Hi Hardy,\n\nI'd like to hear about ${list}.${grade ? `\nMy child is in ${grade.toLowerCase().startsWith('high') ? 'high school' : grade}.` : ''}${note ? `\n\n${note}` : ''}\n\nThanks,\n${name}\n${email}`;
+    document.getElementById('noteText').textContent = body;
+    document.getElementById('mailLink').href = `mailto:${addr}?subject=${encodeURIComponent('Puzzle Circle: ' + list)}&body=${encodeURIComponent(body)}`;
+    jf.hidden = true; done.hidden = false; done.focus();
+  });
+  document.getElementById('copyNote').addEventListener('click', () => copy(document.getElementById('noteText').textContent, document.getElementById('copyMsg'), 'Copied. Paste it into an email to ' + addr + '.'));
+  document.getElementById('editNote').addEventListener('click', () => { done.hidden = true; jf.hidden = false; jf.elements.name.focus(); });
+
+  /* ---------- boot ---------- */
+  function layout(){ setVW(); fitTitles(); drawHills(); window.PC.drawStrips(); sizeCanvas(); kick(); }
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(layout, 120); });
+  render();
+  const go = () => { measureCap(); layout(); intro(); if (!reduce) requestAnimationFrame(drawLeaves); };
+  (document.fonts && document.fonts.load) ? Promise.race([document.fonts.load('100px "Bowlby One"').then(() => document.fonts.ready), new Promise(r => setTimeout(r, 1500))]).then(go) : go();
+})();
+</script>
 </body>
 </html>
