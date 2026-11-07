@@ -436,7 +436,19 @@ footer .name{font-family:var(--display);font-size:28px;line-height:1;color:var(-
 .g-fund h3{font-family:var(--display);font-size:clamp(18px,1.5vw,22px);line-height:1.1}
 .g-fund p{max-width:56ch}
 .g-fund a{color:var(--cream);font-weight:700;text-underline-offset:3px}
+/* nelsonville-york */
+.nv-head{margin-top:clamp(36px,5vw,64px)}
+.nv-title{font-family:var(--display);font-size:clamp(24px,2.4vw,34px);line-height:1}
+.nv-list{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--rule);font-variant-numeric:tabular-nums}
+.nv-list li{display:grid;grid-template-columns:minmax(0,14em) minmax(0,1fr) auto;gap:20px;padding-block:14px;border-bottom:1px solid var(--rule);align-items:baseline}
+.nv-list .what{font-weight:700}
+.nv-list .cov{color:var(--muted)}
+.nv-list .amt{text-align:right}
+.nv-list .tot{border-bottom:0;font-weight:700;font-size:19px}
 @media (max-width:760px){
+  .nv-list li{grid-template-columns:minmax(0,1fr) auto;row-gap:4px}
+  .nv-list .cov{grid-column:1 / -1;grid-row:2}
+  .nv-list .tot .cov{display:none}
   .g-split{grid-template-columns:minmax(0,1fr)}
   .g-gets div,.g-steps li,.g-fund li{grid-template-columns:minmax(0,1fr);gap:6px}
   .g-table{min-width:0}
