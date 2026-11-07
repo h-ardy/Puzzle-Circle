@@ -204,5 +204,64 @@
     addEventListener('resize', sizeTrail);
   }
 
+
+  /* ---------- nav "Join us": eyes follow the pointer, and the button floats
+     and stretches toward a pointer that comes close ---------- */
+  document.querySelectorAll('.joinbtn').forEach(btn => {
+    const pupils = [...btn.querySelectorAll('.eye i')];
+    let mx = null, my = null, near = 0, ang = Math.PI * 0.8, raf = 0, idleT = 0, lastMove = 0, focused = false;
+    let st = {near: 0, x: 0, y: 0};
+    let visible = true;
+    if ('IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) kick(); }).observe(btn);
+    const blink = () => { btn.classList.add('blink'); setTimeout(() => btn.classList.remove('blink'), 130); };
+    (function blinkLoop(){ setTimeout(() => { if (!document.hidden) blink(); blinkLoop(); }, 2600 + Math.random() * 3400); })();
+    function frame(t){
+      raf = 0;
+      // measure without our own transform
+      const r = btn.getBoundingClientRect();
+      const cx = r.left + r.width / 2 - st.x, cy = r.top + r.height / 2 - st.y;
+      let tx = 0, ty = 0, dirx = 0, diry = 0, dist = 1e9;
+      const live = mx !== null && performance.now() - lastMove < 4000;
+      if (live){ dirx = mx - cx; diry = my - cy; dist = Math.hypot(dirx, diry) || 1; dirx /= dist; diry /= dist; }
+      else { const a = t / 1400; dirx = Math.cos(a) * .8; diry = Math.sin(a * 1.3) * .5; }
+      // pupils
+      const pr = Math.min(3.6, live ? dist / 40 : 3);
+      pupils.forEach(p => p.style.transform = `translate(${(dirx * pr).toFixed(2)}px, ${(diry * pr).toFixed(2)}px)`);
+      // closeness, 0 far away, 1 right next to the button
+      const edge = Math.max(r.width, r.height) / 2;
+      let target = live ? Math.max(0, Math.min(1, 1 - (dist - edge) / 170)) : 0;
+      if (focused) target = Math.max(target, 0.85);
+      const over = live && mx > r.left && mx < r.right && my > r.top && my < r.bottom;
+      btn.classList.toggle('happy', over);
+      if (over) target = 1;
+      st.near += (target - st.near) * 0.16;
+      const n = reduce ? 0 : st.near;
+      if (live && !over) ang = Math.atan2(diry, dirx);
+      else if (!live) ang = Math.PI * 0.82;
+      // float + stretch toward the pointer
+      const pull = Math.min(14, (live ? dist : 0) * 0.1) * n;
+      const bob = n > 0.02 ? Math.sin(t / 260) * 2.5 * n : 0;
+      const wantX = Math.cos(ang) * pull, wantY = Math.sin(ang) * pull + bob;
+      st.x += (wantX - st.x) * 0.2; st.y += (wantY - st.y) * 0.2;
+      const deg = ang * 180 / Math.PI, stretch = 1 + 0.12 * n;
+      btn.style.transform = reduce ? '' : `translate(${st.x.toFixed(2)}px, ${st.y.toFixed(2)}px) rotate(${deg.toFixed(2)}deg) scale(${stretch.toFixed(3)}, ${(1 - 0.05 * n).toFixed(3)}) rotate(${(-deg).toFixed(2)}deg)`;
+      if (visible && !document.hidden) raf = requestAnimationFrame(frame);
+    }
+    const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
+    document.addEventListener('visibilitychange', kick);
+    addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; mx = e.clientX; my = e.clientY; lastMove = performance.now(); kick(); }, {passive: true});
+    document.addEventListener('pointerleave', () => { mx = my = null; kick(); });
+    btn.addEventListener('focus', () => { focused = true; kick(); });
+    btn.addEventListener('blur', () => { focused = false; kick(); });
+    if (!reduce) kick();
+  });
+
+  /* ---------- headshots: show initials when a photo is missing ---------- */
+  document.querySelectorAll('.shot img').forEach(img => {
+    const fail = () => img.parentElement.classList.add('noimg');
+    if (img.complete && !img.naturalWidth) fail();
+    img.addEventListener('error', fail);
+  });
+
   window.PC = {rng, SVGNS, ridgeLayers, fitTitles, measureCap, drawStrips, setVW, css, isPhone, reduce};
 })();

@@ -20,20 +20,20 @@
 
       <nav class="nav" aria-label="Main">
         <a class="brand" href="#top">
-          <svg viewBox="-12 -12 24 24" aria-hidden="true"><circle r="11" fill="#F7E2B2" stroke="#16211D" stroke-width="1.4"/><g stroke="#16211D" stroke-width=".9"><path d="M0-7.5L7.13-2.32L4.41 6.07L-4.41 6.07L-7.13-2.32Z" fill="none"/><path d="M0-7.5L4.41 6.07L-7.13-2.32L7.13-2.32L-4.41 6.07Z" fill="none"/></g><g fill="#FBF1DE" stroke="#16211D" stroke-width=".9"><circle cx="0" cy="-7.5" r="1.7"/><circle cx="7.13" cy="-2.32" r="1.7"/><circle cx="4.41" cy="6.07" r="1.7"/><circle cx="-4.41" cy="6.07" r="1.7"/><circle cx="-7.13" cy="-2.32" r="1.7"/></g></svg>
+          <svg class="mark" viewBox="0 0 200 180" aria-hidden="true"><g stroke="#FBF1DE" stroke-width="11" stroke-linecap="round"><line x1="100" y1="20" x2="22" y2="158"/><line x1="100" y1="20" x2="178" y2="158"/><line x1="22" y1="158" x2="178" y2="158"/><line x1="100" y1="20" x2="100" y2="112"/><line x1="22" y1="158" x2="100" y2="112"/><line x1="178" y1="158" x2="100" y2="112"/></g><g fill="#5E9C82"><circle cx="100" cy="20" r="21"/><circle cx="22" cy="158" r="21"/><circle cx="178" cy="158" r="21"/></g><circle cx="100" cy="112" r="23" fill="#E5A727"/></svg>
           <span>Albany-Athens<br>Puzzle Circle</span>
         </a>
         <ul>
-          <li><a href="puzzles.html">Puzzles</a></li>
+          <li><a href="puzzles.html">Puzzles</a></li><li><a href="team.html">Team</a></li>
           <li><a href="#ways">Ways in</a></li>
           <li><a href="#families">Families</a></li>
           <li><a href="#why">Why</a></li>
           <li><a href="#help">Help out</a></li>
         </ul>
-        <a class="btn" href="#join">Get the next date</a>
+        <a class="btn joinbtn" href="#join"><span class="jb-eyes" aria-hidden="true"><span class="eye"><i></i></span><span class="eye"><i></i></span></span><span class="jb-text">Join us</span></a>
       </nav>
       <ul class="mnav" aria-label="Sections">
-        <li><a href="puzzles.html">Puzzles</a></li><li><a href="#ways">Ways in</a></li><li><a href="#families">Families</a></li><li><a href="#why">Why</a></li><li><a href="#help">Help out</a></li>
+        <li><a href="puzzles.html">Puzzles</a></li><li><a href="team.html">Team</a></li><li><a href="#ways">Ways in</a></li><li><a href="#families">Families</a></li><li><a href="#why">Why</a></li><li><a href="#help">Help out</a></li>
       </ul>
 
       <div class="siderule l" aria-hidden="true"></div>
@@ -84,29 +84,8 @@
     <div class="in">
       <div class="about-top">
         <div class="crest">
-          <svg viewBox="0 0 300 300" role="img" aria-label="Puzzle Circle badge: a halved pawpaw whose six seeds read 101101">
-            <defs>
-              <path id="bt" d="M 42,150 A 108,108 0 0 1 258,150"/>
-              <path id="bb" d="M 24,150 A 126,126 0 0 0 276,150"/>
-            </defs>
-            <circle cx="150" cy="150" r="142" fill="none" stroke="currentColor" stroke-width="6"/>
-            <circle cx="150" cy="150" r="96" fill="none" stroke="currentColor" stroke-width="2"/>
-            <text font-family="'Bowlby One',sans-serif" font-size="23" letter-spacing="4" fill="currentColor" text-anchor="middle"><textPath href="#bt" startOffset="50%">PUZZLE CIRCLE</textPath></text>
-            <text font-family="'Andika',sans-serif" font-weight="700" font-size="17" letter-spacing="5" fill="currentColor" text-anchor="middle"><textPath href="#bb" startOffset="50%">ALBANY / ATHENS</textPath></text>
-            <g transform="translate(156,154) rotate(-18) scale(0.84)">
-              <path d="M -86,-4 C -104,-30 -92,-58 -62,-56 C -64,-34 -72,-14 -86,-4 Z" fill="currentColor"/>
-              <path d="M -74,0 L -88,-5" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
-              <path d="M -75,0 C -75,-40 -20,-40 20,-36 C 60,-32 80,-18 80,0 C 80,18 60,32 20,36 C -20,40 -75,40 -75,0 Z" fill="currentColor"/>
-              <path d="M -75,0 C -75,-40 -20,-40 20,-36 C 60,-32 80,-18 80,0 C 80,18 60,32 20,36 C -20,40 -75,40 -75,0 Z" fill="var(--paper)" transform="translate(2,0) scale(0.8)"/>
-              <ellipse cx="-46" cy="-8" rx="9" ry="6.5" fill="currentColor"/>
-              <ellipse cx="-28" cy="8" rx="9" ry="6.5" fill="var(--paper)" stroke="currentColor" stroke-width="2.5"/>
-              <ellipse cx="-10" cy="-8" rx="9" ry="6.5" fill="currentColor"/>
-              <ellipse cx="8" cy="8" rx="9" ry="6.5" fill="currentColor"/>
-              <ellipse cx="26" cy="-8" rx="9" ry="6.5" fill="var(--paper)" stroke="currentColor" stroke-width="2.5"/>
-              <ellipse cx="44" cy="8" rx="9" ry="6.5" fill="currentColor"/>
-            </g>
-          </svg>
-          <p>Read the pawpaw seeds as dark for 1 and light for 0. You get 101101, which is 45 in binary: the handshake answer.</p>
+          <svg class="mark big" viewBox="0 0 200 180" role="img" aria-label="Puzzle Circle mark: four dots, each joined to every other"><g stroke="var(--text)" stroke-width="7" stroke-linecap="round"><line x1="100" y1="20" x2="22" y2="158"/><line x1="100" y1="20" x2="178" y2="158"/><line x1="22" y1="158" x2="178" y2="158"/><line x1="100" y1="20" x2="100" y2="112"/><line x1="22" y1="158" x2="100" y2="112"/><line x1="178" y1="158" x2="100" y2="112"/></g><g fill="var(--logo-green)"><circle cx="100" cy="20" r="15"/><circle cx="22" cy="158" r="15"/><circle cx="178" cy="158" r="15"/></g><circle cx="100" cy="112" r="17" fill="var(--leaf-gold)"/></svg>
+          <p>Our mark is the handshake puzzle with four kids. Each dot joins every other dot, so there are 4&nbsp;×&nbsp;3&nbsp;÷&nbsp;2&nbsp;=&nbsp;6 lines.</p>
         </div>
         <dl class="stats">
           <div><dt>Free events in our first year</dt><dd>7</dd></div>
@@ -138,7 +117,7 @@
       <ul class="tease">
         <li><a href="puzzles.html#patterns"><span class="k">Patterns</span><span class="q">What number comes next: 2, 6, 12, 20, and then?</span></a></li>
         <li><a href="puzzles.html#logic"><span class="k">Logic</span><span class="q">20 heads and 56 legs on a farm of chickens and cows. How many cows?</span></a></li>
-        <li><a href="puzzles.html#counting"><span class="k">Counting</span><span class="q">Six pawpaw seeds, each dark or light. How many different rows?</span></a></li>
+        <li><a href="puzzles.html#counting"><span class="k">Counting</span><span class="q">Six lights in a row, each on or off. How many patterns?</span></a></li>
       </ul>
     </div>
   </section>

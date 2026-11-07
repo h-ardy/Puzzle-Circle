@@ -16,20 +16,20 @@
 <header class="phead">
     <nav class="nav" aria-label="Main">
       <a class="brand" href="index.html">
-        <svg viewBox="-12 -12 24 24" aria-hidden="true"><circle r="11" fill="#F7E2B2" stroke="#16211D" stroke-width="1.4"/><g stroke="#16211D" stroke-width=".9"><path d="M0-7.5L7.13-2.32L4.41 6.07L-4.41 6.07L-7.13-2.32Z" fill="none"/><path d="M0-7.5L4.41 6.07L-7.13-2.32L7.13-2.32L-4.41 6.07Z" fill="none"/></g><g fill="#FBF1DE" stroke="#16211D" stroke-width=".9"><circle cx="0" cy="-7.5" r="1.7"/><circle cx="7.13" cy="-2.32" r="1.7"/><circle cx="4.41" cy="6.07" r="1.7"/><circle cx="-4.41" cy="6.07" r="1.7"/><circle cx="-7.13" cy="-2.32" r="1.7"/></g></svg>
+        <svg class="mark" viewBox="0 0 200 180" aria-hidden="true"><g stroke="#FBF1DE" stroke-width="11" stroke-linecap="round"><line x1="100" y1="20" x2="22" y2="158"/><line x1="100" y1="20" x2="178" y2="158"/><line x1="22" y1="158" x2="178" y2="158"/><line x1="100" y1="20" x2="100" y2="112"/><line x1="22" y1="158" x2="100" y2="112"/><line x1="178" y1="158" x2="100" y2="112"/></g><g fill="#5E9C82"><circle cx="100" cy="20" r="21"/><circle cx="22" cy="158" r="21"/><circle cx="178" cy="158" r="21"/></g><circle cx="100" cy="112" r="23" fill="#E5A727"/></svg>
         <span>Albany-Athens<br>Puzzle Circle</span>
       </a>
       <ul>
-        <li><a href="puzzles.html" aria-current="page">Puzzles</a></li>
+        <li><a href="puzzles.html" aria-current="page">Puzzles</a></li><li><a href="team.html">Team</a></li>
         <li><a href="index.html#ways">Ways in</a></li>
         <li><a href="index.html#families">Families</a></li>
         <li><a href="index.html#why">Why</a></li>
         <li><a href="index.html#help">Help out</a></li>
       </ul>
-      <a class="btn" href="index.html#join">Get the next date</a>
+      <a class="btn joinbtn" href="index.html#join"><span class="jb-eyes" aria-hidden="true"><span class="eye"><i></i></span><span class="eye"><i></i></span></span><span class="jb-text">Join us</span></a>
     </nav>
     <ul class="mnav" aria-label="Sections">
-      <li><a href="puzzles.html" aria-current="page">Puzzles</a></li><li><a href="index.html#ways">Ways in</a></li><li><a href="index.html#families">Families</a></li><li><a href="index.html#why">Why</a></li><li><a href="index.html#help">Help out</a></li>
+      <li><a href="puzzles.html" aria-current="page">Puzzles</a></li><li><a href="team.html">Team</a></li><li><a href="index.html#ways">Ways in</a></li><li><a href="index.html#families">Families</a></li><li><a href="index.html#why">Why</a></li><li><a href="index.html#help">Help out</a></li>
     </ul>
   <div class="top">
     <h1 class="vh">Puzzles from the Albany-Athens Puzzle Circle</h1>
@@ -93,22 +93,22 @@
       <article class="pz" id="counting" data-answer="64">
         <div>
           <h3>Counting</h3>
-          <p class="prob">A pawpaw has six seeds in a row. Each seed is dark or light. How many different rows can there be?</p>
+          <p class="prob">Six lights sit in a row. Each one is on or off. How many different patterns can the row show?</p>
           <div class="vis">
-            <div class="seeds" id="seeds" role="group" aria-label="Six seeds you can flip between dark and light"></div>
+            <div class="seeds" id="seeds" role="group" aria-label="Six lights you can switch on and off"></div>
             <p class="seedval" id="seedval" aria-live="polite"></p>
           </div>
         </div>
         <div class="answer">
           <form class="check" novalidate>
             <div class="field">
-              <label for="a3">Number of rows</label>
+              <label for="a3">Number of patterns</label>
               <div class="line"><input id="a3" inputmode="numeric" autocomplete="off" aria-describedby="fb3"><button class="btn" type="submit">Check</button></div>
               <p class="fb" id="fb3" aria-live="polite"></p>
             </div>
           </form>
-          <details><summary>Show a hint</summary><div class="body">Start small. One seed gives 2 rows. Two seeds give 4. What happens each time you add a seed?</div></details>
-          <details class="sol"><summary>Show the answer</summary><div class="body"><strong>64.</strong> Each new seed doubles the count: 2 × 2 × 2 × 2 × 2 × 2 = 64. Our badge shows one of them, 101101.</div></details>
+          <details><summary>Show a hint</summary><div class="body">Start small. One light gives 2 patterns. Two lights give 4. What happens each time you add a light?</div></details>
+          <details class="sol"><summary>Show the answer</summary><div class="body"><strong>64.</strong> Each new light doubles the count: 2 × 2 × 2 × 2 × 2 × 2 = 64.</div></details>
         </div>
       </article>
     </div>
@@ -155,11 +155,11 @@
     const host = document.getElementById('seeds'), out = document.getElementById('seedval');
     const start = [1,0,1,1,0,1];
     const upd = () => { const bits = [...host.children].map(b => b.getAttribute('aria-pressed') === 'true' ? 1 : 0); const v = parseInt(bits.join(''), 2);
-      out.textContent = `This row reads ${bits.join('')}. As a binary number that's ${v}.`; };
+      out.textContent = `Reading on as 1 and off as 0, this row is ${bits.join('')}. As a binary number that's ${v}.`; };
     start.forEach((b, i) => { const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'seed';
-      btn.setAttribute('aria-pressed', b ? 'true' : 'false'); btn.setAttribute('aria-label', `Seed ${i+1}, dark`);
-      btn.innerHTML = '<svg viewBox="0 0 44 56" aria-hidden="true"><ellipse cx="22" cy="28" rx="14" ry="20"/></svg>';
-      const lab = () => btn.setAttribute('aria-label', `Seed ${i+1}, ${btn.getAttribute('aria-pressed') === 'true' ? 'dark' : 'light'}`);
+      btn.setAttribute('aria-pressed', b ? 'true' : 'false'); 
+      btn.innerHTML = '<svg viewBox="0 0 48 48" aria-hidden="true"><g class="rays"><path d="M24 2v5M24 41v5M2 24h5M41 24h5M8.4 8.4l3.6 3.6M36 36l3.6 3.6M8.4 39.6l3.6-3.6M36 12l3.6-3.6"/></g><circle cx="24" cy="24" r="12"/></svg>';
+      const lab = () => btn.setAttribute('aria-label', `Light ${i+1}, ${btn.getAttribute('aria-pressed') === 'true' ? 'on' : 'off'}`);
       lab(); btn.addEventListener('click', () => { btn.setAttribute('aria-pressed', btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); lab(); upd(); });
       host.appendChild(btn); });
     upd();
