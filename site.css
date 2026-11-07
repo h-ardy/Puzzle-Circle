@@ -503,3 +503,25 @@ footer .legal a:hover{color:var(--cream)}
 .form-note a{color:var(--accent);font-weight:700}
 .who .checks{grid-template-columns:repeat(2,minmax(0,1fr))}
 .who .hint{font-size:15px;color:var(--muted);margin:0}
+
+/* ---------- math captains: the sea ---------- */
+:root{--sea-1:#3C6A70;--sea-2:#2A4E55;--sea-3:#1B353B;--foam:#FBF1DE}
+.seahead .sea{position:relative;height:clamp(200px,24vw,360px);margin-top:clamp(8px,2vw,24px);overflow:hidden}
+.seahead .sun{position:absolute;right:12%;bottom:34%;width:clamp(60px,8vw,120px);fill:var(--sun);opacity:.9}
+.seahead .wave{position:absolute;left:0;width:200%;display:block;animation:sail-wave linear infinite}
+.seahead .wave.w1{bottom:0;height:68%;fill:var(--sea-1);animation-duration:19s}
+.seahead .wave.w2{bottom:0;height:46%;fill:var(--sea-2);animation-duration:13s;animation-direction:reverse}
+.seahead .wave.w3{bottom:0;height:26%;fill:var(--sea-3);animation-duration:9s}
+@keyframes sail-wave{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.seahead .ship-wrap{position:absolute;left:24%;bottom:19%;width:clamp(120px,15vw,230px);animation:sail-drift 26s ease-in-out infinite alternate}
+.seahead .ship{display:block;width:100%;height:auto;transform-origin:50% 85%;animation:sail-bob 3.4s ease-in-out infinite}
+@keyframes sail-bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(6%) rotate(3deg)}}
+@keyframes sail-drift{from{transform:translateX(0)}to{transform:translateX(min(36vw,520px))}}
+@media (max-width:760px){
+  .seahead .sea{height:200px}
+  .seahead .ship-wrap{left:8%;width:120px}
+  @keyframes sail-drift{from{transform:translateX(0)}to{transform:translateX(42vw)}}
+}
+@media (prefers-reduced-motion:reduce){
+  .seahead .wave,.seahead .ship,.seahead .ship-wrap{animation:none}
+}
