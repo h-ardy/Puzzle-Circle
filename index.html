@@ -241,7 +241,9 @@
         </div>
       </div>
       <div id="formWrap">
-        <form id="joinForm" novalidate>
+        <!-- Paste your Formspree form ID between the quotes in data-formspree (the part after formspree.io/f/). Leave it empty and the form only prepares an email note. -->
+        <form id="joinForm" data-formspree="xwlljnyn" novalidate>
+          <p class="vh" aria-hidden="true"><label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
           <div class="two">
             <div class="field">
               <label for="f-name">Your name</label>
@@ -275,11 +277,12 @@
             <label for="f-note">Anything else? <span class="small">(optional)</span></label>
             <textarea id="f-note" name="note"></textarea>
           </div>
-          <button class="btn" type="submit">Prepare my note</button>
+          <button class="btn" type="submit" id="sendBtn">Prepare my note</button>
+          <p class="err" id="e-send" role="alert"></p>
         </form>
         <div class="done" id="done" hidden tabindex="-1">
           <h3>Your note is ready</h3>
-          <p>This page can't send mail yet. Copy the note and send it to <strong>wanghardy10@gmail.com</strong>.</p>
+          <p id="doneWhy">This page can't send mail yet. Copy the note and send it to <strong>wanghardy10@gmail.com</strong>.</p>
           <pre id="noteText"></pre>
           <div class="row">
             <button class="btn" type="button" id="copyNote">Copy the note</button>
@@ -287,6 +290,11 @@
             <button class="btn ghost" type="button" id="editNote">Edit</button>
           </div>
           <p class="small" id="copyMsg" aria-live="polite"></p>
+        </div>
+        <div class="done" id="sent" hidden tabindex="-1">
+          <h3>Sent</h3>
+          <p id="sentMsg">Thanks. Hardy will write back to you by email.</p>
+          <div class="row"><button class="btn ghost" type="button" id="sendAnother">Send another</button></div>
         </div>
       </div>
     </div>
@@ -598,7 +606,10 @@
   }
 
   /* ---------- join form ---------- */
-  const jf = document.getElementById('joinForm'), done = document.getElementById('done');
+  const jf = document.getElementById('joinForm'), done = document.getElementById('done'), sent = document.getElementById('sent');
+  const FORM_ID = (jf.dataset.formspree || '').trim();
+  const sendBtn = document.getElementById('sendBtn');
+  if (FORM_ID) sendBtn.textContent = 'Send';
   const addr = 'wanghardy10@gmail.com';
   function copy(text, msgEl, ok){
     const fallback = () => { if (msgEl) msgEl.textContent = 'Copy didn’t work here. Select the text and copy it yourself.'; };
@@ -622,10 +633,31 @@
     const grade = jf.elements.grade.value, note = jf.elements.note.value.trim();
     const list = ints.length > 1 ? ints.slice(0, -1).join(', ') + ' and ' + ints[ints.length-1] : ints[0];
     const body = `Hi Hardy,\n\nI'd like to hear about ${list}.${grade ? `\nMy child is in ${grade.toLowerCase().startsWith('high') ? 'high school' : grade}.` : ''}${note ? `\n\n${note}` : ''}\n\nThanks,\n${name}\n${email}`;
-    document.getElementById('noteText').textContent = body;
-    document.getElementById('mailLink').href = `mailto:${addr}?subject=${encodeURIComponent('Puzzle Circle: ' + list)}&body=${encodeURIComponent(body)}`;
-    jf.hidden = true; done.hidden = false; done.focus();
+    const subject = 'Puzzle Circle: ' + list;
+    const showNote = why => {
+      document.getElementById('noteText').textContent = body;
+      document.getElementById('mailLink').href = `mailto:${addr}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (why) document.getElementById('doneWhy').innerHTML = why;
+      jf.hidden = true; done.hidden = false; done.focus();
+    };
+    if (!FORM_ID){ showNote(); return; }
+    const fd = new FormData();
+    fd.append('name', name); fd.append('email', email); fd.append('interests', list);
+    if (grade) fd.append('grade', grade);
+    if (note) fd.append('message', note);
+    fd.append('_subject', subject);
+    fd.append('_gotcha', jf.elements._gotcha.value);
+    sendBtn.disabled = true; sendBtn.textContent = 'Sending...'; setErr('e-send', null, '');
+    fetch('https://formspree.io/f/' + encodeURIComponent(FORM_ID), {method: 'POST', body: fd, headers: {Accept: 'application/json'}})
+      .then(r => { if (!r.ok) throw new Error(r.status); })
+      .then(() => {
+        document.getElementById('sentMsg').textContent = `Thanks, ${name}. Hardy will write back to ${email}.`;
+        jf.reset(); jf.hidden = true; sent.hidden = false; sent.focus();
+      })
+      .catch(() => showNote('That didn\u2019t send. Copy the note below and email it to <strong>' + addr + '</strong> instead.'))
+      .finally(() => { sendBtn.disabled = false; sendBtn.textContent = 'Send'; });
   });
+  document.getElementById('sendAnother').addEventListener('click', () => { sent.hidden = true; jf.hidden = false; jf.elements.name.focus(); });
   document.getElementById('copyNote').addEventListener('click', () => copy(document.getElementById('noteText').textContent, document.getElementById('copyMsg'), 'Copied. Paste it into an email to ' + addr + '.'));
   document.getElementById('editNote').addEventListener('click', () => { done.hidden = true; jf.hidden = false; jf.elements.name.focus(); });
 
