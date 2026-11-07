@@ -525,3 +525,100 @@ footer .legal a:hover{color:var(--cream)}
 @media (prefers-reduced-motion:reduce){
   .seahead .wave,.seahead .ship,.seahead .ship-wrap{animation:none}
 }
+
+/* ---------- math captains: cartoon pass ---------- */
+.cap{--toon:#16211D;--toon-shadow:#16211D}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cap{--toon-shadow:#000}}
+:root[data-theme="dark"] .cap{--toon-shadow:#000}
+.cap .seahead .sea{height:clamp(240px,26vw,390px)}
+.cap .seahead .sun{right:auto;left:52%;bottom:44%;width:clamp(80px,9vw,140px);fill:none;opacity:1}
+.cap .seahead .sun .rays{transform-origin:70px 70px;animation:toon-spin 40s linear infinite}
+@keyframes toon-spin{to{transform:rotate(360deg)}}
+.cap .seahead .cloud{position:absolute;width:clamp(80px,8vw,130px);animation:toon-cloud 60s linear infinite}
+.cap .seahead .cloud.c1{top:8%;left:-10%}
+.cap .seahead .cloud.c2{top:22%;left:-10%;width:clamp(60px,6vw,96px);animation-duration:85s;animation-delay:-40s}
+@keyframes toon-cloud{to{transform:translateX(120vw)}}
+.cap .seahead .wave{animation-name:toon-wave}
+@keyframes toon-wave{0%{transform:translate(0,0)}25%{transform:translate(-12.5%,5px)}50%{transform:translate(-25%,0)}75%{transform:translate(-37.5%,5px)}100%{transform:translate(-50%,0)}}
+.cap .seahead .wave.w1{fill:#4A8088}
+.cap .seahead .wave.w3{z-index:3}
+.cap .seahead .ship-wrap{left:4%;bottom:21%}
+.cap .seahead .ship .flag{transform-origin:118px 30px;animation:toon-flag .6s ease-in-out infinite alternate}
+@keyframes toon-flag{to{transform:scaleX(.8) skewY(4deg)}}
+@keyframes sail-drift{from{transform:translateX(0)}to{transform:translateX(min(28vw,400px))}}
+.crew{position:absolute;right:max(16px,4vw);bottom:0;width:clamp(170px,24vw,370px);z-index:2;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.crew .captain{display:block;width:100%;height:auto;overflow:visible}
+.captain .arm-wave{transform-origin:108px 214px;animation:toon-wave-arm 2.4s ease-in-out infinite}
+@keyframes toon-wave-arm{0%,60%,100%{transform:rotate(0)}70%{transform:rotate(-14deg)}80%{transform:rotate(8deg)}90%{transform:rotate(-10deg)}}
+.captain .head{transform-origin:150px 190px;animation:toon-nod 3.2s ease-in-out infinite}
+@keyframes toon-nod{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+.captain .eye{transform-box:fill-box;transform-origin:center;animation:toon-blink 5s infinite}
+@keyframes toon-blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.captain .mouth{transform-box:fill-box;transform-origin:50% 0}
+.captain.talk-cap .mouth{animation:toon-talk .18s ease-in-out 6 alternate}
+@keyframes toon-talk{to{transform:scaleY(.35)}}
+.cap .parrot .p-head{transform-box:fill-box;transform-origin:30% 90%;animation:toon-bob 1.6s ease-in-out infinite}
+@keyframes toon-bob{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(6deg) translateY(2px)}}
+.cap .parrot .p-wing{transform-box:fill-box;transform-origin:70% 10%}
+.cap .parrot .p-jaw{transform-box:fill-box;transform-origin:10% 10%}
+.captain.talk-par .p-jaw{animation:toon-jaw .14s ease-in-out 8 alternate}
+.captain.talk-par .p-wing{animation:toon-flap .12s ease-in-out 8 alternate}
+@keyframes toon-jaw{to{transform:rotate(22deg)}}
+@keyframes toon-flap{to{transform:rotate(-28deg)}}
+.cap .bubble{position:absolute;margin:0;background:#FBF1DE;color:#16211D;border:3px solid #16211D;border-radius:22px;padding:10px 16px 11px;font-family:var(--display);font-size:clamp(14px,1.3vw,20px);line-height:1.12;box-shadow:4px 4px 0 #16211D;max-width:12.5em;width:max-content;z-index:2;transition:opacity .2s,transform .2s}
+.cap .bubble::before,.cap .bubble::after{content:"";position:absolute;width:0;height:0;border-style:solid}
+.crew .b-cap{right:70%;top:4%;transform-origin:100% 100%}
+.crew .b-cap::before{right:14px;bottom:-22px;border-width:20px 0 0 22px;border-color:#16211D transparent transparent transparent}
+.crew .b-cap::after{right:18px;bottom:-14px;border-width:14px 0 0 15px;border-color:#FBF1DE transparent transparent transparent}
+.crew .b-par{left:52%;top:-6%;transform-origin:0 100%;background:#F7E2B2}
+.crew .b-par::before{left:16px;bottom:-22px;border-width:20px 22px 0 0;border-color:#16211D transparent transparent transparent}
+.crew .b-par::after{left:20px;bottom:-14px;border-width:14px 15px 0 0;border-color:#F7E2B2 transparent transparent transparent}
+.cap .bubble.hide{opacity:0;transform:scale(.6)}
+.cap .bubble.pop{animation:toon-pop .42s cubic-bezier(.34,1.56,.64,1)}
+@keyframes toon-pop{from{opacity:0;transform:scale(.55)}to{opacity:1;transform:scale(1)}}
+.crew:hover .captain{transform:translateY(-3px)}
+.crew .captain{transition:transform .2s cubic-bezier(.23,1,.32,1)}
+.cap .seahead .top{position:relative;z-index:3}
+/* body */
+.cap .h2{text-shadow:.055em .055em 0 var(--leaf-gold)}
+.cap .sec.dusk .h2{text-shadow:.055em .055em 0 #16211D}
+.cap .sec{border-bottom:0}
+.cap .sec::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:16px;z-index:1;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 16'%3E%3Cpath d='M0 8 Q16 0 32 8 T64 8' fill='none' stroke='%2316211D' stroke-width='3'/%3E%3C/svg%3E") repeat-x center/64px 16px}
+.cap .sec.dusk::after,.cap .sec:last-of-type::after{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cap .sec::after{filter:invert(.85)}}
+.cap .g-gets dt{display:flex;align-items:center;gap:12px}
+.cap .g-gets dt::before{content:"";flex:none;width:30px;height:30px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='%2316211D' stroke-width='14'/%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='%23FBF1DE' stroke-width='9'/%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='%23B3301E' stroke-width='9' stroke-dasharray='11.78 11.78'/%3E%3C/svg%3E") center/contain no-repeat}
+.cap .g-steps .when{justify-self:start;align-self:start;background:#FBF1DE;color:#A93D1C;border:3px solid #16211D;border-radius:14px;padding:8px 14px 9px;box-shadow:4px 4px 0 var(--toon-shadow);transform:rotate(-2.5deg)}
+.cap .g-steps li:nth-child(even) .when{transform:rotate(2deg)}
+.cap .g-total span{color:var(--leaf-gold);-webkit-text-stroke:2px #16211D;paint-order:stroke fill;text-shadow:4px 4px 0 var(--toon-shadow)}
+.cap .g-bar{height:34px;gap:0;border:3px solid #16211D;border-radius:999px;box-shadow:4px 4px 0 var(--toon-shadow)}
+.cap .g-bar span+span{border-left:3px solid #16211D}
+.cap .g-tablewrap{margin-top:clamp(24px,3vw,36px);background:#FBF1DE;color:#16211D;border:3px solid #16211D;border-radius:18px;box-shadow:6px 6px 0 var(--toon-shadow);padding:6px clamp(12px,2vw,24px) 4px;--text:#16211D;--muted:#4D5A53;--rule:rgba(22,33,29,.25)}
+.cap .g-raise{height:30px;border:3px solid #16211D;border-radius:999px;background:#FBF1DE;box-shadow:4px 4px 0 #16211D}
+.cap .g-raise span{background:var(--leaf-gold);border-right:3px solid #16211D}
+.cap .g-fund h3{text-shadow:2px 2px 0 #16211D}
+.cap .btn.paper{box-shadow:4px 4px 0 var(--leaf-gold)}
+.cap .btn.paper:hover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:6px 6px 0 var(--leaf-gold)}
+.cap .btn.paper:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--leaf-gold)}
+.cameo{position:relative;display:flex;align-items:flex-end;gap:2px}
+.cameo .bubble{position:relative;align-self:flex-start;font-size:clamp(14px,1.2vw,18px);background:#F7E2B2;margin-bottom:56px}
+.cameo .bubble::before{right:-22px;bottom:12px;border-width:0 0 18px 22px;border-color:transparent transparent transparent #16211D}
+.cameo .bubble::after{right:-13px;bottom:15px;border-width:0 0 12px 14px;border-color:transparent transparent transparent #F7E2B2}
+.cameo-bird{flex:none;width:clamp(70px,7vw,96px);height:auto;overflow:visible}
+.g-head .cameo{margin-left:auto;margin-right:clamp(0px,2vw,32px)}
+.pn-act{display:flex;align-items:flex-end;gap:clamp(12px,2vw,28px);flex-wrap:wrap}
+@media (max-width:760px){
+  .cap .seahead .sea{height:300px}
+  .crew{width:150px;right:10px}
+  .crew .b-cap{right:auto;left:-118%;top:-6%;max-width:10em}
+  .crew .b-par{left:6%;top:-40%;max-width:9em}
+  .cap .seahead .ship-wrap{left:2%;width:110px;bottom:18%}
+  @keyframes sail-drift{from{transform:translateX(0)}to{transform:translateX(18vw)}}
+  .cap .seahead .sun{left:38%;bottom:50%}
+  .g-head .cameo{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .cap .seahead .sun .rays,.cap .seahead .cloud,.cap .seahead .ship .flag,.captain *,.cap .parrot *,.cap .bubble{animation:none!important}
+  .crew .captain{transition:none}
+  .cap .btn.paper:hover{transform:none}
+}
