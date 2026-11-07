@@ -16,9 +16,6 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#B8451F">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Bowlby+One&display=swap">
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
@@ -243,6 +240,18 @@
         <!-- Paste your Formspree form ID between the quotes in data-formspree (the part after formspree.io/f/). Leave it empty and the form only prepares an email note. -->
         <form id="joinForm" data-formspree="xwlljnyn" novalidate>
           <p class="vh" aria-hidden="true"><label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
+          <fieldset class="field who" aria-describedby="who-hint e-who">
+            <legend>Who's filling this out?</legend>
+            <p class="hint" id="who-hint">If you're a kid under 13, ask a parent or guardian to fill this out for you.</p>
+            <div class="checks">
+              <label><input type="radio" name="who" value="parent"> A parent or guardian</label>
+              <label><input type="radio" name="who" value="student13"> A student, 13 or older</label>
+              <label><input type="radio" name="who" value="teacher"> A teacher or librarian</label>
+              <label><input type="radio" name="who" value="other"> Someone else</label>
+              <label><input type="radio" name="who" value="under13"> A kid under 13</label>
+            </div>
+            <p class="err" id="e-who"></p>
+          </fieldset>
           <div class="two">
             <div class="field">
               <label for="f-name">Your name</label>
@@ -273,11 +282,12 @@
             </select>
           </div>
           <div class="field">
-            <label for="f-note">Anything else? <span class="small">(optional)</span></label>
+            <label for="f-note">Anything else? <span class="small">(optional, please leave out your child's full name)</span></label>
             <textarea id="f-note" name="note"></textarea>
           </div>
           <button class="btn" type="submit" id="sendBtn">Prepare my note</button>
           <p class="err" id="e-send" role="alert"></p>
+          <p class="form-note">We only use this to reply to you, and we never sell or share it. <a href="privacy.html">Privacy policy</a></p>
         </form>
         <div class="done" id="done" hidden tabindex="-1">
           <h3>Your note is ready</h3>
@@ -307,6 +317,7 @@
     <div>
       <p class="name">Appalachian Puzzle Circle</p>
       <p>Albany, Ohio. Free math, run by student volunteers, for any kid in Athens County who wants it.</p>
+      <p class="legal"><a href="privacy.html">Privacy</a><a href="privacy.html#cookies">Cookies</a><a href="privacy.html#children">Children's privacy</a><a href="terms.html">Terms</a></p>
     </div>
     <p><a href="#top">Back to the circle</a></p>
   </div>
@@ -624,14 +635,22 @@
     const name = jf.elements.name.value.trim(), email = jf.elements.email.value.trim();
     const ints = [...jf.querySelectorAll('input[name="int"]:checked')].map(i => i.value);
     let first = null;
+    const whoEl = jf.querySelector('input[name="who"]:checked'), who = whoEl ? whoEl.value : '';
+    if (who === 'under13'){
+      setErr('e-who', null, 'Kids under 13 need a parent or guardian to send this. Ask a grown-up to fill it out with their own name and email.');
+      jf.querySelector('input[name="who"][value="parent"]').focus();
+      return;
+    }
+    setErr('e-who', null, who ? '' : 'Tell us who\u2019s filling this out.'); if (!who) first = jf.querySelector('input[name="who"]');
     setErr('e-name', jf.elements.name, name ? '' : 'Add your name so we know who to write back to.'); if (!name) first = first || jf.elements.name;
     const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
     setErr('e-email', jf.elements.email, okEmail ? '' : (email ? 'That email is missing something. Use the form name@example.com.' : 'Add an email so we can reply.')); if (!okEmail) first = first || jf.elements.email;
     setErr('e-int', null, ints.length ? '' : 'Pick at least one thing to hear about.'); if (!ints.length) first = first || jf.querySelector('input[name="int"]');
     if (first){ first.focus(); return; }
     const grade = jf.elements.grade.value, note = jf.elements.note.value.trim();
+    const WHO = {parent: 'a parent or guardian', student13: 'a student, 13 or older', teacher: 'a teacher or librarian', other: 'interested in the program'};
     const list = ints.length > 1 ? ints.slice(0, -1).join(', ') + ' and ' + ints[ints.length-1] : ints[0];
-    const body = `Hi Hardy,\n\nI'd like to hear about ${list}.${grade ? `\nMy child is in ${grade.toLowerCase().startsWith('high') ? 'high school' : grade}.` : ''}${note ? `\n\n${note}` : ''}\n\nThanks,\n${name}\n${email}`;
+    const body = `Hi Hardy,\n\nI'm ${WHO[who]}. I'd like to hear about ${list}.${grade ? `\nMy child is in ${grade.toLowerCase().startsWith('high') ? 'high school' : grade}.` : ''}${note ? `\n\n${note}` : ''}\n\nThanks,\n${name}\n${email}`;
     const subject = 'Puzzle Circle: ' + list;
     const showNote = why => {
       document.getElementById('noteText').textContent = body;
@@ -641,7 +660,7 @@
     };
     if (!FORM_ID){ showNote(); return; }
     const fd = new FormData();
-    fd.append('name', name); fd.append('email', email); fd.append('interests', list);
+    fd.append('name', name); fd.append('email', email); fd.append('filled_out_by', WHO[who]); fd.append('interests', list);
     if (grade) fd.append('grade', grade);
     if (note) fd.append('message', note);
     fd.append('_subject', subject);
