@@ -465,3 +465,19 @@ footer .name{font-family:var(--display);font-size:28px;line-height:1;color:var(-
   .g-table tfoot tr{border-bottom:0}
   .g-table tfoot td:nth-child(2){display:none}
 }
+
+/* ---------- donate page ---------- */
+.d-raise{background:var(--field);border:1px solid var(--rule)}
+.d-raise span{background:var(--accent)}
+#progress .g-raise-key strong{color:var(--accent)}
+#progress .small a{color:var(--accent);font-weight:700}
+.d-gifts{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.d-gifts li{display:grid;grid-template-columns:minmax(0,5.5em) minmax(0,1fr);gap:20px;align-items:baseline;padding-block:18px;border-bottom:1px solid var(--rule)}
+.d-gifts .amt{font-family:var(--display);font-size:clamp(28px,2.6vw,38px);line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.d-gifts li span:last-child{font-size:clamp(17px,1.4vw,19px)}
+.d-ways{margin-top:clamp(28px,4vw,48px)}
+.d-ways li{grid-template-columns:minmax(0,10em) minmax(0,1fr)}
+.d-ways p{max-width:62ch}
+.d-btn{margin-top:12px;background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.sec.dusk .g-fund a.d-btn{color:var(--ink)}
+@media (max-width:760px){.d-gifts li{grid-template-columns:minmax(0,4.5em) minmax(0,1fr);gap:14px}}
