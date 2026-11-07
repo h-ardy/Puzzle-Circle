@@ -436,6 +436,11 @@ footer .name{font-family:var(--display);font-size:28px;line-height:1;color:var(-
 .g-fund h3{font-family:var(--display);font-size:clamp(18px,1.5vw,22px);line-height:1.1}
 .g-fund p{max-width:56ch}
 .g-fund a{color:var(--cream);font-weight:700;text-underline-offset:3px}
+.g-raise{height:22px;border-radius:4px;background:rgba(251,241,222,.25);overflow:hidden;margin-top:8px}
+.g-raise span{display:block;height:100%;background:var(--sun)}
+.g-raise-key{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.g-raise-key strong{color:var(--sun)}
+#funding .g-fund{margin-top:clamp(28px,4vw,48px)}
 /* nelsonville-york */
 .nv-head{margin-top:clamp(36px,5vw,64px)}
 .nv-title{font-family:var(--display);font-size:clamp(24px,2.4vw,34px);line-height:1}
