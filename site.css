@@ -749,3 +749,30 @@ footer .legal a:hover{color:var(--cream)}
 
 /* ---------- long words wrap ---------- */
 .d-ways p,.ga-empty p,.ga-note{overflow-wrap:anywhere}
+
+/* ---------- supporters band and swag ---------- */
+.supporters{position:relative;z-index:2;display:flex;align-items:center;gap:clamp(16px,2.4vw,40px);padding:clamp(18px,2vw,28px) calc(var(--gutter) + max(16px,env(safe-area-inset-left,0px)));border-bottom:1px solid var(--rule)}
+.sp-label{flex:none;margin:0;font:700 .82rem/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sp-viewport{position:relative;flex:1;min-width:0;display:flex;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.sp-track{flex:none;display:flex;align-items:center;list-style:none;margin:0;padding:0;animation:sp-roll 34s linear infinite}
+.sp-track li{display:flex;align-items:baseline;gap:10px;white-space:nowrap;padding-left:clamp(20px,2.4vw,40px)}
+.sp-name{font-family:var(--display);font-size:clamp(1.1rem,1.6vw,1.6rem);line-height:1.1;color:var(--text)}
+.sp-role{font-size:.85rem;color:var(--muted)}
+.sp-mark{width:22px;height:20px;margin-left:clamp(20px,2.4vw,40px);align-self:center;color:var(--text)}
+.supporters:hover .sp-track,.supporters:focus-within .sp-track{animation-play-state:paused}
+@keyframes sp-roll{to{transform:translateX(-100%)}}
+@media (max-width:760px){.supporters{flex-direction:column;align-items:flex-start;gap:10px;padding:18px 16px}.sp-viewport{width:100%}}
+@media (prefers-reduced-motion:reduce){
+  .sp-track{animation:none;flex:1 1 auto;min-width:0;flex-wrap:wrap;row-gap:10px}
+  .sp-copy{display:none}
+  .sp-viewport{-webkit-mask-image:none;mask-image:none}
+  .sp-track{gap:8px 22px}
+  .sp-track li{padding-left:0;white-space:normal}
+  .sp-mark{display:none}
+}
+/* captains: room for swag */
+.g-raise-row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.g-raise-row .g-raise{flex:1;margin-top:0}
+.g-swag{flex:0 0 24%;height:30px;border:3px dashed #FBF1DE;border-radius:999px;display:grid;place-items:center}
+.g-swag span{font-family:var(--display);font-size:13px;letter-spacing:.04em;color:#FBF1DE}
+.nv-go{margin-top:20px}
