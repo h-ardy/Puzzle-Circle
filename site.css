@@ -708,3 +708,44 @@ footer .legal a:hover{color:var(--cream)}
 @media (min-width:761px) and (max-width:1200px){.philo .sec{padding-inline:calc(var(--gutter) * .5)}}
 @media (max-width:760px){.colonnade{display:none}}
 @media (prefers-reduced-motion:reduce){.col-svg .vol,.col-svg .leaf .li,.col-svg .cap{transition:none!important;animation:none!important}}
+
+/* ---------- math captains: crew carousel ---------- */
+.cap{--sea-h:clamp(300px,30vw,440px)}
+.cap .seahead .sea{height:var(--sea-h)}
+.cap .seahead .sun{left:58%;bottom:50%}
+.cap .seahead .ship-wrap{width:clamp(110px,13vw,200px)}
+@keyframes sail-drift{from{transform:translateX(0)}to{transform:translateX(min(8vw,110px))}}
+.crewcar{--cw:clamp(108px,10.5vw,160px);position:absolute;left:37%;bottom:calc(var(--sea-h) * .33);width:calc(var(--cw) * 2.3);height:calc(var(--cw) * 1.25 + 46px);transform:translateX(-50%);z-index:2;touch-action:pan-y;user-select:none}
+.cc-track{list-style:none;margin:0;padding:0;position:relative;height:100%}
+.cc-card{position:absolute;left:50%;bottom:0;width:var(--cw);margin-left:calc(var(--cw) / -2);transition:transform .6s cubic-bezier(.23,1,.32,1),opacity .4s,filter .4s;transform-origin:50% 100%}
+.cc-card figure{margin:0}
+.cc-frame{aspect-ratio:4/5;background:#7A4A26;border:3px solid #16211D;border-radius:10px;padding:7px;box-shadow:4px 4px 0 #16211D;overflow:hidden}
+.cc-frame > *{display:block;width:100%;height:100%;object-fit:cover;border:2px solid #16211D;border-radius:4px;background:#FBF1DE}
+.cc-name{position:relative;margin:-14px auto 0;width:max-content;max-width:110%;padding:5px 12px 6px;background:#F7E2B2;color:#16211D;border:3px solid #16211D;border-radius:8px;box-shadow:3px 3px 0 #16211D;font-family:var(--display);font-size:clamp(12px,1vw,16px);line-height:1;text-align:center;white-space:nowrap}
+.cc-card.is-main{transform:none;z-index:3}
+.cc-card.is-prev{transform:translateX(-64%) scale(.72) rotate(-7deg);z-index:2;filter:saturate(.75) brightness(.92);cursor:pointer}
+.cc-card.is-next{transform:translateX(64%) scale(.72) rotate(7deg);z-index:2;filter:saturate(.75) brightness(.92);cursor:pointer}
+.cc-card.is-gone-l{transform:translateX(-90%) scale(.5) rotate(-12deg);opacity:0;z-index:1;pointer-events:none}
+.cc-card.is-gone-r{transform:translateX(90%) scale(.5) rotate(12deg);opacity:0;z-index:1;pointer-events:none}
+.cc-card.is-main .cc-frame{animation:cc-bob 3.2s ease-in-out infinite}
+@keyframes cc-bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-4px) rotate(1deg)}}
+.cc-btn{position:absolute;bottom:calc(var(--cw) * .55);width:40px;height:40px;border-radius:50%;border:3px solid #16211D;background:#FBF1DE;color:#16211D;font:700 24px/1 var(--display);display:grid;place-items:center;padding:0 0 3px;cursor:pointer;box-shadow:3px 3px 0 #16211D;z-index:4;transition:transform .12s}
+.cc-btn:hover{transform:translateY(-2px)}
+.cc-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #16211D}
+.cc-btn:focus-visible{outline:3px solid #F7E2B2;outline-offset:2px}
+.cc-prev{left:-14px}.cc-next{right:-14px}
+@media (max-width:760px){
+  .cap{--sea-h:500px}
+  .crewcar{--cw:112px;left:50%;bottom:calc(var(--sea-h) - var(--cw) * 1.25 - 46px - 16px)}
+  .cap .seahead .sun{left:auto;right:6%;bottom:auto;top:30px;width:64px}
+  .cap .seahead .cloud{display:none}
+  .cc-prev{left:-4px}.cc-next{right:-4px}
+  .cap .seahead .wave.w1{height:204px}
+  .cap .seahead .wave.w2{height:138px}
+  .cap .seahead .wave.w3{height:78px}
+  .cap .seahead .ship-wrap{bottom:58px}
+}
+@media (prefers-reduced-motion:reduce){.cc-card,.cc-card.is-main .cc-frame{transition:none;animation:none}}
+
+/* ---------- long words wrap ---------- */
+.d-ways p,.ga-empty p,.ga-note{overflow-wrap:anywhere}

@@ -18,7 +18,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#B8451F">
-<link rel="stylesheet" href="site.css?v=4f186a2b">
+<link rel="stylesheet" href="site.css?v=03e4b56c">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the page</a>
@@ -176,7 +176,7 @@
         <details><summary>Do we need to sign up for a library event?</summary><div class="body">No. Library events are open to anyone. Turn up, or write first if you'd like to know what to expect.</div></details>
         <details><summary>My child isn't a "math kid." Is this for them?</summary><div class="body">Yes. If your child is anywhere between bored in math class and obsessed with it, this is for them.</div></details>
         <details><summary>What ages is it for?</summary><div class="body">Library events in Albany and Nelsonville are for elementary kids. Neighborhood events are for middle and high schoolers, so everyone works on problems that fit.</div></details>
-        <details><summary>Who is teaching?</summary><div class="body">More than a dozen volunteer instructors, all students at high schools in Albany and Athens. A mathematics professor at Ohio University and several PhD students advise them.</div></details>
+        <details><summary>Who is teaching?</summary><div class="body">More than a dozen volunteer instructors, all students at high schools in Albany and Athens. A professor at Ohio University and other doctoral advisors guide them.</div></details>
         <details><summary>What is Math Captains, and how do we apply?</summary><div class="body">Math Captains is a team of ten students who meet online every week and in person once a month, and who compete in Math Kangaroo in March. Applications open once a year. Leave your email below and we'll tell you when. The full plan is on <a href="captains.html">the Math Captains page</a>.</div></details>
       </div>
     </div>
@@ -672,7 +672,7 @@
     fetch('https://formspree.io/f/' + encodeURIComponent(FORM_ID), {method: 'POST', body: fd, headers: {Accept: 'application/json'}})
       .then(r => { if (!r.ok) throw new Error(r.status); })
       .then(() => {
-        document.getElementById('sentMsg').textContent = `Thanks, ${name}. Hardy will write back to ${email}.`;
+        document.getElementById('sentMsg').textContent = `Thanks, ${name}. Our team will write back to ${email}.`;
         jf.reset(); jf.hidden = true; sent.hidden = false; sent.focus();
       })
       .catch(() => showNote('That didn\u2019t send. Copy the note below and email it to <strong>' + addr + '</strong> instead.'))
