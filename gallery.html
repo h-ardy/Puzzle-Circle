@@ -16,7 +16,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#B8451F">
-<link rel="stylesheet" href="site.css?v=edaa9685">
+<link rel="stylesheet" href="site.css?v=d422fd37">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the photos</a>
@@ -41,7 +41,7 @@
   <div class="top">
     <h1 class="vh">Photo gallery</h1>
     <div class="tl" aria-hidden="true"><svg><text>GALLERY</text></svg></div>
-    <p class="intro">Puzzle tables, library afternoons and the occasional argument about an answer. Photos from our events around Athens County.</p>
+    <p class="intro">Puzzle tables, library afternoons and the occasional argument about an answer. Photos from our events around Athens County. Kids' faces are blurred.</p>
   </div>
   <svg class="strip" data-seed="83" data-sky="1" aria-hidden="true"></svg>
 </header>
@@ -61,7 +61,48 @@
         w and h are the photo's width and height in pixels. Only post photos of kids with written permission from a parent.
       -->
       <script type="application/json" id="photo-list">
-[]
+[
+ {
+  "file": "albany-4.jpg",
+  "w": 960,
+  "h": 1280,
+  "alt": "Kids bent over puzzle sheets at a library table while volunteers help",
+  "caption": "Heads down on a puzzle",
+  "where": "Wells Library, Albany"
+ },
+ {
+  "file": "albany-1.jpg",
+  "w": 1600,
+  "h": 1208,
+  "alt": "Kids and volunteers stand together in a library meeting room holding a handmade Albany Puzzle Circle sign",
+  "caption": "The whole group after an event",
+  "where": "Wells Library, Albany"
+ },
+ {
+  "file": "albany-5.jpg",
+  "w": 1200,
+  "h": 1600,
+  "alt": "Kids at tables near a red easel board in the library meeting room",
+  "caption": "Between rounds",
+  "where": "Wells Library, Albany"
+ },
+ {
+  "file": "albany-2.jpg",
+  "w": 1600,
+  "h": 1200,
+  "alt": "A paper sign reading Albany Puzzle Circle hangs over the door of a meeting room full of kids at puzzle tables",
+  "caption": "The room, from the doorway",
+  "where": "Wells Library, Albany"
+ },
+ {
+  "file": "albany-3.jpg",
+  "w": 1600,
+  "h": 900,
+  "alt": "Kids and volunteers working at tables all around a library meeting room",
+  "caption": "Every table busy",
+  "where": "Wells Library, Albany"
+ }
+]
       </script>
       <ul class="ga-grid" id="ga-grid"></ul>
       <div class="ga-empty" id="ga-empty" hidden>
@@ -84,7 +125,7 @@
   <dialog class="ga-box" id="ga-box" aria-label="Photo viewer">
     <figure>
       <img id="ga-img" alt="">
-      <figcaption id="ga-cap"></figcaption>
+      <figcaption><span id="ga-cap"></span><span class="ga-count" id="ga-count"></span></figcaption>
     </figure>
     <button class="ga-btn ga-close" type="button" data-act="close" aria-label="Close">Close</button>
     <button class="ga-btn ga-prev" type="button" data-act="prev" aria-label="Previous photo">&larr;</button>
@@ -112,21 +153,66 @@
   (document.fonts && document.fonts.load) ? Promise.race([document.fonts.load('100px "Bowlby One"').then(() => document.fonts.ready), new Promise(r => setTimeout(r, 1500))]).then(go) : go();
 })();
 </script>
-<script>
+<script id="gallery-js">
 (() => {
   let photos = [];
   try { photos = JSON.parse(document.getElementById('photo-list').textContent) || []; } catch (e) { photos = []; }
-  const grid = document.getElementById('ga-grid'), box = document.getElementById('ga-box'), img = document.getElementById('ga-img'), cap = document.getElementById('ga-cap');
+  const grid = document.getElementById('ga-grid'), box = document.getElementById('ga-box'), img = document.getElementById('ga-img'), cap = document.getElementById('ga-cap'), count = document.getElementById('ga-count');
   if (!photos.length) { document.getElementById('ga-empty').hidden = false; grid.hidden = true; return; }
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let shown = photos.map((_, i) => i), cur = 0, opener = null;
   const esc = s => String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const ar = p => (p.w && p.h) ? p.w / p.h : 4 / 3;
+  const small = f => f.replace(/\.(jpe?g|png|webp)$/i, '-sm.$1');
+
+  // Justified rows: every row fills the width, photos in a row share one height.
+  // Breakpoints are chosen so each row lands as close as possible to the target height.
+  const layout = () => {
+    const Wd = grid.clientWidth - 1; if (Wd < 50) return;
+    const gap = parseFloat(getComputedStyle(grid).columnGap) || 12;
+    const target = Wd < 520 ? 150 : Wd < 900 ? 220 : 320;
+    const items = shown.map(i => ar(photos[i])), n = items.length;
+    const best = new Array(n + 1).fill(Infinity), prev = new Array(n + 1).fill(0); best[0] = 0;
+    for (let j = 1; j <= n; j++) {
+      let sum = 0;
+      for (let i = j; i >= 1 && j - i < 5; i--) {
+        sum += items[i - 1];
+        let h = (Wd - gap * (j - i)) / sum;
+        if (j === n) h = Math.min(h, target * 1.35);
+        const cost = Math.pow((h - target) / target, 2) + (h > target * 1.8 ? 9 : 0);
+        if (best[i - 1] + cost < best[j]) { best[j] = best[i - 1] + cost; prev[j] = i - 1; }
+      }
+    }
+    const rows = []; for (let j = n; j > 0; j = prev[j]) rows.unshift([prev[j], j]);
+    const lis = grid.children; let y = 0;
+    rows.forEach(([a, b], r) => {
+      let sum = 0; for (let k = a; k < b; k++) sum += items[k];
+      let h = (Wd - gap * (b - a - 1)) / sum;
+      if (r === rows.length - 1) h = Math.min(h, target * 1.35);
+      let x = 0;
+      for (let k = a; k < b; k++) { const li = lis[k], w = items[k] * h; Object.assign(li.style, { left: x.toFixed(2) + 'px', top: y.toFixed(2) + 'px', width: w.toFixed(2) + 'px', height: h.toFixed(2) + 'px' }); x += w + gap; }
+      y += h + gap;
+    });
+    grid.style.height = Math.max(0, y - gap).toFixed(2) + 'px';
+  };
   const render = () => {
     grid.innerHTML = shown.map((i, k) => {
-      const p = photos[i], ar = p.w && p.h ? `aspect-ratio:${p.w}/${p.h}` : 'aspect-ratio:4/3';
-      return `<li><button type="button" class="ga-tile" data-k="${k}" style="${ar}"><img src="gallery/${esc(p.file)}" alt="${esc(p.alt)}" loading="lazy" decoding="async"${p.w ? ` width="${p.w}" height="${p.h}"` : ''}></button>${p.caption || p.where ? `<p class="ga-cap">${esc(p.caption)}${p.where ? `<span>${esc(p.where)}</span>` : ''}</p>` : ''}</li>`;
+      const p = photos[i];
+      return `<li style="--d:${(k * 70)}ms"><button type="button" class="ga-tile" data-k="${k}" aria-label="Open photo: ${esc(p.caption || p.alt)}"><img src="gallery/${esc(small(p.file))}" alt="${esc(p.alt)}" loading="lazy" decoding="async"${p.w ? ` width="${p.w}" height="${p.h}"` : ''}></button></li>`;
     }).join('');
-    grid.querySelectorAll('img').forEach(im => { const done = () => im.closest('.ga-tile').classList.add('loaded'); im.complete ? done() : im.addEventListener('load', done); });
+    grid.querySelectorAll('img').forEach(im => {
+      const done = () => im.closest('.ga-tile').classList.add('loaded');
+      im.addEventListener('error', () => { if (!im.dataset.full) { im.dataset.full = 1; im.src = im.src.replace('-sm.', '.'); } });
+      im.complete && im.naturalWidth ? done() : im.addEventListener('load', done);
+    });
+    layout();
+    if (calm || !('IntersectionObserver' in window)) { grid.classList.add('in'); return; }
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { grid.classList.add('in'); io.disconnect(); } }, { rootMargin: '0px 0px -10% 0px' });
+    grid.classList.remove('in'); io.observe(grid);
   };
+  if ('ResizeObserver' in window) { let w = 0; new ResizeObserver(() => { if (grid.clientWidth !== w) { w = grid.clientWidth; layout(); } }).observe(grid); }
+  else addEventListener('resize', layout);
+
   const places = [...new Set(photos.map(p => p.where).filter(Boolean))];
   if (places.length > 1) {
     const f = document.querySelector('.ga-filters'); f.hidden = false;
@@ -139,17 +225,22 @@
   }
   const show = k => {
     cur = (k + shown.length) % shown.length; const p = photos[shown[cur]];
+    box.classList.remove('swap'); void box.offsetWidth; box.classList.add('swap');
     img.src = 'gallery/' + p.file; img.alt = p.alt || '';
-    cap.textContent = [p.caption, p.where].filter(Boolean).join(' · ');
+    cap.textContent = [p.caption, p.where].filter(Boolean).join(', ');
+    count.textContent = shown.length > 1 ? `${cur + 1} of ${shown.length}` : '';
     box.querySelector('.ga-prev').hidden = box.querySelector('.ga-next').hidden = shown.length < 2;
   };
   grid.addEventListener('click', e => { const t = e.target.closest('.ga-tile'); if (!t) return; opener = t; show(+t.dataset.k); box.showModal(); });
   box.addEventListener('click', e => {
     const a = e.target.closest('[data-act]');
     if (a) { a.dataset.act === 'close' ? box.close() : show(cur + (a.dataset.act === 'next' ? 1 : -1)); return; }
-    if (e.target === box) box.close();
+    if (e.target === box || e.target.tagName === 'FIGURE') box.close();
   });
   box.addEventListener('keydown', e => { if (e.key === 'ArrowRight') show(cur + 1); if (e.key === 'ArrowLeft') show(cur - 1); });
+  let sx = null;
+  box.addEventListener('pointerdown', e => { sx = e.clientX; });
+  box.addEventListener('pointerup', e => { if (sx !== null && Math.abs(e.clientX - sx) > 50) show(cur + (e.clientX < sx ? 1 : -1)); sx = null; });
   box.addEventListener('close', () => { if (opener) opener.focus(); });
   render();
 })();
