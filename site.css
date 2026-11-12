@@ -803,3 +803,10 @@ footer .legal a:hover{color:var(--cream)}
 .sec .tag.l{left:calc(var(--rule-x) / 2)}
 .sec .tag.r{right:calc(var(--rule-x) / 2)}
 @media (max-width:1060px){.sec .tag{display:none}}
+
+/* ---------- supporter links ---------- */
+.sp-link{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;border-radius:6px;min-height:44px}
+a.sp-link .sp-name{text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px;text-decoration-thickness:2px;transition:text-decoration-color .2s}
+a.sp-link:hover .sp-name{text-decoration-color:#F7E2B2}
+a.sp-link:focus-visible{outline:3px solid #F7E2B2;outline-offset:4px}
+a.sp-link:active{transform:translateY(1px)}
