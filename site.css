@@ -787,3 +787,19 @@ footer .legal a:hover{color:var(--cream)}
 .g-swag{flex:0 0 24%;height:30px;border:3px dashed #FBF1DE;border-radius:999px;display:grid;place-items:center}
 .g-swag span{font-family:var(--display);font-size:13px;letter-spacing:.04em;color:#FBF1DE}
 .nv-go{margin-top:20px}
+
+/* ---------- supporters on black ---------- */
+.supporters{background:#111412;border-bottom:0;color:#FBF1DE}
+.supporters .sp-label{color:#F7E2B2}
+.supporters .sp-name{color:#FBF1DE}
+.supporters .sp-role{color:rgba(251,241,222,.62)}
+.supporters .sp-mark{color:#FBF1DE}
+.supporters .sp-track li{align-items:center}
+.sp-logo{flex:none;width:auto;height:clamp(34px,3vw,46px);margin-right:4px}
+
+/* ---------- side rules clear the content ---------- */
+:root{--rule-x:min(var(--gutter), max(8px, calc(max(16px, (100vw - 1200px) / 2) + var(--gutter) * .55 - 30px)))}
+.page::before{left:var(--rule-x)}.page::after{right:var(--rule-x)}
+.sec .tag.l{left:calc(var(--rule-x) / 2)}
+.sec .tag.r{right:calc(var(--rule-x) / 2)}
+@media (max-width:1060px){.sec .tag{display:none}}
