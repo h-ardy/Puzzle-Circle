@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-MeYY75KPckBU4fYZ4NDDEvujwp5awmYPRtsZMgPfbFQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Appalachian Puzzle Circle</title>
 <meta name="description" content="Free math puzzles, games and competitions for kids in Athens County, Ohio. Run by student volunteers.">
@@ -665,7 +667,8 @@
     const showNote = why => {
       document.getElementById('noteText').textContent = body;
       document.getElementById('mailLink').href = `mailto:${addr}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      if (why) document.getElementById('doneWhy').innerHTML = why;
+      const dw = document.getElementById('doneWhy');
+      if (why) { const st = document.createElement('strong'); st.textContent = addr; dw.replaceChildren('That didn\u2019t send. Copy the note below and email it to ', st, ' instead.'); }
       jf.hidden = true; done.hidden = false; done.focus();
     };
     if (!FORM_ID){ showNote(); return; }
@@ -682,7 +685,7 @@
         document.getElementById('sentMsg').textContent = `Thanks, ${name}. Our team will write back to ${email}.`;
         jf.reset(); jf.hidden = true; sent.hidden = false; sent.focus();
       })
-      .catch(() => showNote('That didn\u2019t send. Copy the note below and email it to <strong>' + addr + '</strong> instead.'))
+      .catch(() => showNote(true))
       .finally(() => { sendBtn.disabled = false; sendBtn.textContent = 'Send'; });
   });
   document.getElementById('sendAnother').addEventListener('click', () => { sent.hidden = true; jf.hidden = false; jf.elements.name.focus(); });
