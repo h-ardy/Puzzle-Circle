@@ -810,3 +810,6 @@ a.sp-link .sp-name{text-decoration:underline;text-decoration-color:transparent;t
 a.sp-link:hover .sp-name{text-decoration-color:#F7E2B2}
 a.sp-link:focus-visible{outline:3px solid #F7E2B2;outline-offset:4px}
 a.sp-link:active{transform:translateY(1px)}
+
+/* ---------- team advisors note ---------- */
+.adv-note{margin-top:20px;max-width:44rem;color:var(--muted)}
