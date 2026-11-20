@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-MeYY75KPckBU4fYZ4NDDEvujwp5awmYPRtsZMgPfbFQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-wXxmK2ph04IP8PhFVRNh1Axp3V5WWU3pEiTrp7HKAyI='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Appalachian Puzzle Circle</title>
@@ -20,7 +20,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#B8451F">
-<link rel="stylesheet" href="site.css?v=ce09378b">
+<link rel="stylesheet" href="site.css?v=275f332a">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the page</a>
@@ -64,8 +64,6 @@
 
       <div class="brief" id="brief">
         <p class="q">Ten kids meet at the library. Every kid shakes hands with every other kid once.</p>
-        <p class="how">Draw every handshake. Drag from one kid to another, or tap two kids in a row.</p>
-        <p class="next">Free snacks and prizes at every library event. Next date coming soon. <a href="#join">Get it by email</a></p>
       </div>
 
       <div class="ring" id="ring" role="group" aria-label="Handshake puzzle: ten kids in a circle">
@@ -75,11 +73,22 @@
 
       <div class="tally" id="tally">
         <p class="count" aria-live="polite"><span id="count">0</span><small id="countLabel">handshakes so far</small></p>
-        <p class="status" id="status" aria-live="polite">How many will there be? Guess first, then start drawing.</p>
+        <p class="status" id="status" aria-live="polite">Guess how many first. Then drag from kid to kid, or tap two kids.</p>
         <div class="row">
           <button class="btn ghost" type="button" id="reset">Start over</button>
           <button class="btn" type="button" id="drawRest">Draw the rest</button>
         </div>
+      </div>
+
+      <div class="snaps" id="snaps">
+        <a class="snap-link" href="gallery.html">
+          <span class="snap s1"><img src="gallery/albany-1-sm.jpg" width="800" height="604" alt="Kids and volunteers stand together in a library meeting room holding a handmade Albany Puzzle Circle sign" fetchpriority="high"></span>
+          <span class="snap s2"><img src="gallery/albany-4-sm.jpg" width="600" height="800" alt="Kids bent over puzzle sheets at a library table while volunteers help"></span>
+          <span class="snap s3"><img src="gallery/albany-2-sm.jpg" width="800" height="600" alt="A paper sign reading Albany Puzzle Circle hangs over the door of a meeting room full of kids at puzzle tables"></span>
+          <span class="vh">See more photos in the gallery</span>
+        </a>
+        <p class="sticker">Free snacks and prizes</p>
+        <p class="next">At every library event. Next date coming soon. <a href="#join">Get it by email</a></p>
       </div>
 
       <canvas class="leaves" id="leaves" aria-hidden="true"></canvas>
@@ -96,46 +105,43 @@
     </div>
   </section>
 
-  <section class="sec" id="about" aria-labelledby="about-h">
-    <span class="tag l" aria-hidden="true">What it is</span>
-    <span class="tag r" aria-hidden="true">Athens County, Ohio</span>
-    <div class="in">
-      <div class="about-top">
-        <div class="crest">
-          <svg class="mark big" viewBox="0 0 200 180" role="img" aria-label="Puzzle Circle mark: four dots, each joined to every other"><g stroke="var(--text)" stroke-width="7" stroke-linecap="round"><line x1="100" y1="20" x2="22" y2="158"/><line x1="100" y1="20" x2="178" y2="158"/><line x1="22" y1="158" x2="178" y2="158"/><line x1="100" y1="20" x2="100" y2="112"/><line x1="22" y1="158" x2="100" y2="112"/><line x1="178" y1="158" x2="100" y2="112"/></g><g fill="var(--logo-green)"><circle cx="100" cy="20" r="15"/><circle cx="22" cy="158" r="15"/><circle cx="178" cy="158" r="15"/></g><circle cx="100" cy="112" r="17" fill="var(--leaf-gold)"/></svg>
-          <p>Our mark is the handshake puzzle with four kids. Each dot joins every other dot, so there are 4&nbsp;×&nbsp;3&nbsp;÷&nbsp;2&nbsp;=&nbsp;6 lines.</p>
-        </div>
-        <dl class="stats">
-          <div><dt>Free events in our first year</dt><dd>7</dd></div>
-          <div><dt>Held at the Wells Library in Albany</dt><dd>4</dd></div>
-          <div><dt>Held in neighborhoods for older kids</dt><dd>3</dd></div>
-          <div><dt>Student volunteer instructors</dt><dd>12+</dd></div>
-          <div><dt>Math Captains this year</dt><dd>10</dd></div>
-          <div><dt>Cost to any family</dt><dd>$0</dd></div>
-        </dl>
-      </div>
+  <section class="reel" aria-labelledby="reel-h">
+    <h2 class="vh" id="reel-h">Photos from past events</h2>
+    <ul class="reel-row">
+        <li data-rv><a href="gallery.html"><img src="gallery/albany-3-sm.jpg" width="800" height="450" alt="Kids and volunteers working at tables all around a library meeting room" loading="lazy" decoding="async"></a></li>
+        <li data-rv><a href="gallery.html"><img src="gallery/albany-5-sm.jpg" width="600" height="800" alt="Kids at tables near a red easel board in the library meeting room" loading="lazy" decoding="async"></a></li>
+        <li data-rv><a href="gallery.html"><img src="gallery/albany-1-sm.jpg" width="800" height="604" alt="Kids and volunteers stand together in a library meeting room holding a handmade Albany Puzzle Circle sign" loading="lazy" decoding="async"></a></li>
+        <li data-rv><a href="gallery.html"><img src="gallery/albany-4-sm.jpg" width="600" height="800" alt="Kids bent over puzzle sheets at a library table while volunteers help" loading="lazy" decoding="async"></a></li>
+        <li data-rv><a href="gallery.html"><img src="gallery/albany-2-sm.jpg" width="800" height="600" alt="A paper sign reading Albany Puzzle Circle hangs over the door of a meeting room full of kids at puzzle tables" loading="lazy" decoding="async"></a></li>
+    </ul>
+    <p class="reel-cap" data-rv>Puzzle nights at the Wells Library in Albany. <a href="gallery.html">See the gallery</a></p>
+  </section>
 
-      <div class="statement">
-        <span class="c" aria-hidden="true"></span><span class="c" aria-hidden="true"></span><span class="c" aria-hidden="true"></span><span class="c" aria-hidden="true"></span>
-        <h2 id="about-h">Free math for any kid in Athens County. Students teach it, and nobody pays.</h2>
-        <p>The Appalachian Puzzle Circle runs puzzle events at the Wells and Nelsonville libraries and around Athens county, plus a small cohort that trains for competitions. We do the kind of math nobody assigns: puzzles, games and problems worth arguing about.</p>
-      </div>
+  <section class="story" id="about" aria-labelledby="about-h">
+    <div class="story-pin">
+      <h2 class="story-lines" id="about-h">
+        <span class="sl sl1">Free math for any kid in Athens County.</span>
+        <span class="sl sl2">Students teach it.</span>
+        <span class="sl sl3">Nobody pays.</span>
+      </h2>
     </div>
   </section>
 
-  <section class="sec" id="more" aria-labelledby="more-h">
-    <span class="tag l" aria-hidden="true">Puzzle break</span>
-    <span class="tag r" aria-hidden="true">Grown-ups welcome</span>
-    <div class="in teaser">
-      <div class="txt">
-        <h2 class="h2" id="more-h">Three more puzzles</h2>
-        <p class="lede">The kind of problems we bring to events. Each one checks your answer and has a hint if you get stuck.</p>
-        <a class="btn paper" href="puzzles.html">Open the puzzles</a>
+  <section class="sec nums" id="numbers" aria-labelledby="nums-h">
+    <span class="tag l" aria-hidden="true">Year one</span>
+    <span class="tag r" aria-hidden="true">Athens County, Ohio</span>
+    <div class="in">
+      <div class="nums-head" data-rv>
+        <h2 class="h2" id="nums-h">Our first year, in numbers</h2>
+        <p class="lede">We run puzzle events at the Wells and Nelsonville libraries and around Athens County, plus a small team that trains for competitions.</p>
       </div>
-      <ul class="tease">
-        <li><a href="puzzles.html#patterns"><span class="k">Patterns</span><span class="q">What number comes next: 2, 6, 12, 20, and then?</span></a></li>
-        <li><a href="puzzles.html#logic"><span class="k">Logic</span><span class="q">20 heads and 56 legs on a farm of chickens and cows. How many cows?</span></a></li>
-        <li><a href="puzzles.html#counting"><span class="k">Counting</span><span class="q">Six lights in a row, each on or off. How many patterns?</span></a></li>
+      <ul class="nums-grid">
+        <li class="n n-rust n-wide" data-rv><p class="n-big" aria-hidden="true"><span data-count="7">7</span></p><p class="n-what"><span class="vh">7 </span>free events in our first year</p></li>
+        <li class="n n-gold" data-rv><p class="n-big" aria-hidden="true"><span data-count="4">4</span></p><p class="n-what"><span class="vh">4 </span>at the Wells Library in Albany, for elementary kids</p></li>
+        <li class="n n-green" data-rv><p class="n-big" aria-hidden="true"><span data-count="3">3</span></p><p class="n-what"><span class="vh">3 </span>in neighborhoods around the county, for middle and high schoolers</p></li>
+        <li class="n n-ink" data-rv><p class="n-big" aria-hidden="true"><span data-count="12">12</span>+</p><p class="n-what"><span class="vh">12+ </span>high school students volunteer to teach</p></li>
+        <li class="n n-sun" data-rv><p class="n-big" aria-hidden="true"><span data-count="10">10</span></p><p class="n-what"><span class="vh">10 </span>Math Captains are training for Math Kangaroo this year</p></li>
+        <li class="n n-red" data-rv><p class="n-big" aria-hidden="true">$<span data-count="0">0</span></p><p class="n-what"><span class="vh">$0 </span>is what any family pays</p></li>
       </ul>
     </div>
   </section>
@@ -144,28 +150,51 @@
     <span class="tag l" aria-hidden="true">Ways in</span>
     <span class="tag r" aria-hidden="true">Start here, go further</span>
     <div class="in">
-      <h2 class="h2" id="ways-h">Two ways to take part</h2>
-      <div class="ways">
-        <div class="way">
-          <p class="step">Start here</p>
-          <h3>Library events</h3>
-          <p>A couple of hours of puzzles, games and problems, with free snacks and prizes. Elementary events are at the Wells Library in Albany and the Nelsonville Public Library. Events for middle and high schoolers happen in neighborhoods around the county. Bring a friend. You don't need to be good at math or to have come before.</p>
-          <dl class="facts">
-            <dt>Who</dt><dd>Any kid, plus their grown-ups</dd>
-            <dt>Sign-up</dt><dd>None. Just turn up.</dd>
-            <dt>Cost</dt><dd>Free</dd>
-          </dl>
+      <h2 class="h2" id="ways-h" data-rv>Two ways to take part</h2>
+      <div class="wb">
+        <article class="wb-photo wb-a" data-rv aria-labelledby="w1-h">
+          <img src="gallery/albany-3.jpg" width="1600" height="900" alt="Kids and volunteers working at tables all around a library meeting room" loading="lazy" decoding="async">
+          <div class="wb-txt">
+            <p class="step">1. Start here</p>
+            <h3 id="w1-h">Library events</h3>
+            <p>A couple of hours of puzzles, games and problems. Bring a friend. You don't need to be good at math or to have come before.</p>
+          </div>
+        </article>
+        <div class="wb-blk b-gold" data-rv>
+          <p class="wb-big">Free snacks and prizes</p>
+          <p>at every library event</p>
         </div>
-        <div class="way">
-          <p class="step">Go further</p>
-          <h3>Math Captains</h3>
-          <p>A cohort of ten students who check in online every week and meet in person once a month. They work through real problem solving and head to Math Kangaroo on Thursday, March 18, 2027. For most of them it will be the first competition they have entered.</p>
-          <dl class="facts">
-            <dt>Size</dt><dd>10 students</dd>
-            <dt>Joining</dt><dd>Applications open once a year</dd>
-            <dt>Meets</dt><dd>Weekly online, monthly at the Athens library</dd>
-          </dl>
-          <p><a class="textlink" href="captains.html">See the Math Captains plan</a></p>
+        <dl class="wb-blk b-green wb-facts" data-rv>
+          <div><dt>Who</dt><dd>Any kid, plus their grown-ups</dd></div>
+          <div><dt>Sign-up</dt><dd>None. Just turn up.</dd></div>
+          <div><dt>Cost</dt><dd>Free</dd></div>
+        </dl>
+        <div class="wb-blk b-ink wb-where" data-rv>
+          <p class="wb-k">Where</p>
+          <p><strong>Elementary:</strong> the Wells Library in Albany and the Nelsonville Public Library.</p>
+          <p><strong>Middle and high school:</strong> neighborhoods around the county.</p>
+        </div>
+
+        <article class="wb-photo wb-b" data-rv aria-labelledby="w2-h">
+          <img src="gallery/albany-4.jpg" width="960" height="1280" alt="Kids bent over puzzle sheets at a library table while volunteers help" loading="lazy" decoding="async">
+          <div class="wb-txt">
+            <p class="step">2. Go further</p>
+            <h3 id="w2-h">Math Captains</h3>
+            <p>Ten students work through real problem solving together. For most of them, Math Kangaroo will be the first competition they have entered.</p>
+            <p><a class="wb-link" href="captains.html">See the Math Captains plan</a></p>
+          </div>
+        </article>
+        <div class="wb-blk b-rust wb-num" data-rv>
+          <p class="wb-big"><span data-count="10">10</span> students</p>
+          <p>Applications open once a year</p>
+        </div>
+        <dl class="wb-blk b-sun wb-facts" data-rv>
+          <div><dt>Every week</dt><dd>Online check-ins</dd></div>
+          <div><dt>Every month</dt><dd>Meet in person at the Athens library</dd></div>
+        </dl>
+        <div class="wb-blk b-teal wb-date" data-rv>
+          <p class="wb-k">Math Kangaroo</p>
+          <p class="wb-big">Thursday, March 18, 2027</p>
         </div>
       </div>
     </div>
@@ -195,21 +224,39 @@
     <span class="tag l" aria-hidden="true">Why this exists</span>
     <span class="tag r" aria-hidden="true">Who runs it</span>
     <div class="in">
-      <h2 class="vh" id="why-h">Why this exists</h2>
-      <blockquote>Most kids don’t dislike math. They dislike the version they were given.</blockquote>
-      <div class="cols">
-        <div>
-          <p>A local school eliminated its gifted program. After that, a kid around here who loved math had nowhere to take it: no team, no club, no competition. The talent stayed. The path went away.</p>
-          <p>So a few of us built one, starting with puzzles at the library.</p>
+      <h2 class="h2" id="why-h" data-rv>Why this exists</h2>
+      <div class="yb">
+        <figure class="yb-photo y1" data-rv>
+          <img src="gallery/albany-2.jpg" width="1600" height="1200" alt="A paper sign reading Albany Puzzle Circle hangs over the door of a meeting room full of kids at puzzle tables" loading="lazy" decoding="async">
+          <blockquote>Most kids don’t dislike math. They dislike the version they were given.</blockquote>
+        </figure>
+        <div class="yb-blk b-rust" data-rv>
+          <p class="yb-k">What happened</p>
+          <p class="yb-big">A local school eliminated its gifted program.</p>
         </div>
-        <div>
-          <p>Two students who come to the Puzzle Circle have since been named <a href="https://www.nationalmathstars.org/" target="_blank" rel="noopener">National Math Stars</a>. That's the point. The ability was already here, in ordinary classrooms in a rural county, waiting for someone to hand it a harder problem.</p>
+        <div class="yb-blk b-ink" data-rv>
+          <p class="yb-k">After that</p>
+          <p class="yb-mid">A kid here who loved math had nowhere to take it. No team, no club, no competition.</p>
+          <p class="yb-sm">The talent stayed. The path went away.</p>
+        </div>
+        <div class="yb-blk b-gold" data-rv>
+          <p class="yb-k">So</p>
+          <p class="yb-big">A few of us built one, starting with puzzles at the library.</p>
+        </div>
+        <figure class="yb-photo y2" data-rv>
+          <img src="gallery/albany-5.jpg" width="1200" height="1600" alt="Kids at tables near a red easel board in the library meeting room" loading="lazy" decoding="async">
+        </figure>
+        <div class="yb-blk b-green" data-rv>
+          <p class="yb-num" aria-hidden="true"><span data-count="2">2</span></p>
+          <p class="yb-mid"><span class="vh">2 </span>students who come to the Circle have been named <a href="https://www.nationalmathstars.org/" target="_blank" rel="noopener">National Math Stars<span class="vh"> (opens in a new tab)</span></a>.</p>
+          <p class="yb-sm">The ability was already here, in ordinary classrooms in a rural county.</p>
         </div>
       </div>
+      <h3 class="yb-who" data-rv>Who runs it</h3>
       <dl class="people">
-        <div><dt>12+ instructors</dt><dd>High school students from Albany and Athens run the tables at every event.</dd></div>
-        <div><dt>Advisors</dt><dd>Blake Regan of Ohio University is our official advisor, with other doctoral advisors.</dd></div>
-        <div><dt>Hardy Wang</dt><dd>Founder and president. Started the Circle as a high school student in Albany.</dd></div>
+        <div data-rv><dt>12+ instructors</dt><dd>High school students from Albany and Athens run the tables at every event.</dd></div>
+        <div data-rv><dt>Advisors</dt><dd>Blake Regan of Ohio University is our official advisor, with other doctoral advisors.</dd></div>
+        <div data-rv><dt>Hardy Wang</dt><dd>Founder and president. Started the Circle as a high school student in Albany.</dd></div>
       </dl>
     </div>
   </section>
@@ -335,12 +382,12 @@
   </div>
 </footer>
 
-<script src="site.js?v=38962295"></script>
+<script src="site.js?v=c341c76e"></script>
 <script>
 (() => {
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isPhone = () => matchMedia('(max-width:760px)').matches;
+  const isPhone = () => matchMedia('(max-width:1060px)').matches;
   const css = n => getComputedStyle(root).getPropertyValue(n).trim();
   const setVW = window.PC.setVW;
 
@@ -468,11 +515,11 @@
     if (total === 45){
       ring.classList.add('solved'); drawBtn.hidden = true;
       if (!solvedShown){ solvedShown = true;
-        statusEl.textContent = 'Each kid shakes 9 hands, and 10\u00a0\u00d7\u00a09\u00a0=\u00a090. That counts every handshake twice, once from each side, so there are 90\u00a0\u00f7\u00a02\u00a0=\u00a045.'; }
+        statusEl.textContent = 'Each kid shakes 9 hands: 10\u00a0\u00d7\u00a09\u00a0=\u00a090. That counts every handshake twice, so it\u2019s 90\u00a0\u00f7\u00a02\u00a0=\u00a045.'; }
     } else {
       ring.classList.remove('solved'); solvedShown = false; drawBtn.hidden = false;
       if (auto.size && !autoAll && !mine.size) statusEl.textContent = 'Keep scrolling and the rest draw themselves, neighbors first.';
-      else if (!total) statusEl.textContent = 'How many will there be? Guess first, then start drawing.';
+      else if (!total) statusEl.textContent = 'Guess how many first. Then drag from kid to kid, or tap two kids.';
     }
   }
   function say(t){ statusEl.textContent = t; }

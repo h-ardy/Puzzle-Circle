@@ -265,3 +265,60 @@
 
   window.PC = {rng, SVGNS, ridgeLayers, fitTitles, measureCap, drawStrips, setVW, css, isPhone, reduce};
 })();
+
+/* ---------- homepage: reveals, counting numbers, one line at a time ---------- */
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+  const els = [...document.querySelectorAll('[data-rv]')];
+  const story = document.querySelector('.story');
+  if (reduce || !('IntersectionObserver' in window)) return;
+
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  function countUp(scope){
+    const nums = scope.matches('[data-count]') ? [scope] : [...scope.querySelectorAll('[data-count]')];
+    nums.forEach(el => {
+      const to = +el.dataset.count; if (!to) return;
+      const t0 = performance.now() + 200, dur = 900 + to * 40;
+      const step = now => {
+        const t = Math.min(1, Math.max(0, (now - t0) / dur));
+        el.textContent = Math.round(ease(t) * to);
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
+  if (els.length){
+    root.classList.add('rv-on');
+    els.forEach(el => el.querySelectorAll('[data-count]').forEach(n => { if (+n.dataset.count) n.textContent = '0'; }));
+    const io = new IntersectionObserver(es => {
+      let k = 0;
+      es.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.style.setProperty('--i', k++);
+        e.target.classList.add('rv-in');
+        io.unobserve(e.target);
+        countUp(e.target);
+      });
+    }, {rootMargin: '0px 0px -8% 0px', threshold: 0.12});
+    els.forEach(el => io.observe(el));
+  }
+
+  if (story){
+    story.classList.add('st-on');
+    const lines = [...story.querySelectorAll('.sl')];
+    const marks = [null, 0.22, 0.55];
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = story.getBoundingClientRect(), vh = innerHeight;
+      const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - vh)));
+      lines.forEach((l, i) => l.classList.toggle('on', i === 0 ? r.top < vh * 0.55 : p >= marks[i]));
+    };
+    const kick = () => { if (!raf) raf = requestAnimationFrame(update); };
+    addEventListener('scroll', kick, {passive: true});
+    addEventListener('resize', kick);
+    update();
+  }
+})();
